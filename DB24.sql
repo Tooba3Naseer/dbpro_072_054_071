@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [DB24]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Database [DB24]    Script Date: 4/14/2019 4:37:56 PM ******/
 CREATE DATABASE [DB24]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -75,7 +75,7 @@ ALTER DATABASE [DB24] SET TARGET_RECOVERY_TIME = 0 SECONDS
 GO
 USE [DB24]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -96,7 +96,7 @@ CREATE TABLE [dbo].[Categories](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[ChefOrder]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[ChefOrder]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[ChefOrder](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -129,7 +129,7 @@ CREATE TABLE [dbo].[Customer](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Delivery Team]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Delivery Team]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -145,7 +145,7 @@ CREATE TABLE [dbo].[Delivery Team](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Designation]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Designation]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[Designation](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Employee]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -183,7 +183,7 @@ CREATE TABLE [dbo].[Employee](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[EmployeeType]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[EmployeeType]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -198,7 +198,7 @@ CREATE TABLE [dbo].[EmployeeType](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Feedback]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Feedback]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +206,7 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Feedback](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Feedback] [varchar](max) NOT NULL,
 	[CustomerId] [int] NOT NULL,
  CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED 
@@ -218,7 +218,7 @@ CREATE TABLE [dbo].[Feedback](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FoodCategory]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[FoodCategory]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -239,7 +239,7 @@ CREATE TABLE [dbo].[FoodCategory](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[MenuCard]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[MenuCard]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -263,7 +263,7 @@ CREATE TABLE [dbo].[MenuCard](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -285,7 +285,7 @@ CREATE TABLE [dbo].[OrderDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -312,7 +312,7 @@ CREATE TABLE [dbo].[Orders](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Orders DeliveryTeams]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Orders DeliveryTeams]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -334,7 +334,7 @@ CREATE TABLE [dbo].[Orders DeliveryTeams](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[OrdersVehicles]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[OrdersVehicles]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -355,7 +355,7 @@ CREATE TABLE [dbo].[OrdersVehicles](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Purchased Items]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Purchased Items]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -379,7 +379,7 @@ CREATE TABLE [dbo].[Purchased Items](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Suppliers]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Suppliers]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -404,7 +404,7 @@ CREATE TABLE [dbo].[Suppliers](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[TeamMembers]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[TeamMembers]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -426,7 +426,7 @@ CREATE TABLE [dbo].[TeamMembers](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -451,7 +451,7 @@ CREATE TABLE [dbo].[Users](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Vehicles]    Script Date: 4/14/2019 3:22:58 PM ******/
+/****** Object:  Table [dbo].[Vehicles]    Script Date: 4/14/2019 4:37:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
