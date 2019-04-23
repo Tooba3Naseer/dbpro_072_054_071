@@ -6,11 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="assests/images/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+
+
+
     <!-- Page Title -->
-    <title>My Profile</title>
+    <title>Cart</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/l.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/linearicons.css">
@@ -18,11 +33,18 @@
     <link rel="stylesheet" href="assets/css/main.css">
 
 
+
+
     <link rel="stylesheet" href="assets/css/animate-3.7.0.css">
     <link rel="stylesheet" href="assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="assets/fonts/flat-icon/flaticon.css">
     <link rel="stylesheet" href="assets/css/bootstrap-4.1.3.min.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+
+    
 </head>
 <body>
     <!-- Preloader Starts -->
@@ -32,7 +54,7 @@
     <!-- Preloader End -->
 
     <!-- Header Area Starts -->
-	<header class="header-area header-area2">
+    <header class="header-area header-area2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -48,21 +70,16 @@
                     </div>  
                     <div class="main-menu main-menu2">
                         <ul>
-                             <li><a href="index.html">home</a></li>
-                          
+                            <li ><a href="CookIndex.html">Home</a></li>
+                           
                             
-                               
                             </li>
-                            <li><a href="OrderDetails.html">Orders Details</a></li>
-                            <li><a href="cart.html">Cart</a></li>
-                             <li><a href="#">Customer Details</a>
-                                <ul class="sub-menu">
-                                    <li><a href="feedback.html">Feedback</a></li>
-                                    <li class="active"><a href="MyProfile.html">MyProfile</a></li>
-                                    <li><a href="index.html">Log Out</a></li>
-                                </ul>
+                            <li><a href="Order.html">Orders</a></li>
+                           
+                            <li><a href="MyProfile.html">My Profile</a>
                             </li>
-                            <li><a href="#AboutUs">about</a></li>
+                             <li><a href="#AboutUs">About</a></li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -71,71 +88,110 @@
     </header>
     <!-- Header Area End -->
 
+
+
+
     <!-- Banner Area Starts -->
     <section class="banner-area banner-area2 blog-page text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1><i>My Profile</i></h1>
-                  
+                    <h1><i>Orders</i></h1>
+                    
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
-    
-    <!--my profile forms start-->
 
-    <section class="order_details section_gap">
+
+<!--================Cart Area =================-->
+    <section class="cart_area">
         <div class="container">
-            
-            <div class="order_details_table">
-                <h2>My Profile</h2>
+            <div class="cart_inner">
                 <div class="table-responsive">
                     <table class="table">
-                        <tr>
-                            <td> <label for="fname"><i class="fa fa-user"></i> First Name</label> </td>
-                            <td> <input type="text" class="adjust" id="fname" name="firstname" placeholder="John"> </td>
-                        </tr>
-                        <tr>
-                            <td> <label for="fname"><i class="fa fa-user"></i> Last Name</label> </td>
-                            <td> <input type="text" class="adjust" id="fname" name="firstname" placeholder="Doe"> </td>
-                        </tr>
-                        <tr>
-                            <td><label for="email"><i class="fa fa-envelope"></i> Email</label> </td>
-                            <td><input type="text" class="adjust" id="email" name="email" placeholder="john@example.com"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="password"> Old Password</label> </td>
-                            <td><input type="password" class="adjust" id="password" name="password"></td>
-                        </tr>
-                         <tr>
-                            <td><label for="password"> New Password</label> </td>
-                            <td><input type="password" class="adjust" id="password" name="password"></td>
-                        </tr>
-                        <tr>
-                        <td><label for="phone"><span class="glyphicon">&#xe182;</span> Contact No</label> </td>
-                        <td><input type="tel" class="adjust" id="email" name="phoneNo" placeholder="0320-407654">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="adr"><i class="fa fa-address-card-o"></i> Address</label></td>
-                        <td><input type="text" class="adjust" id="adr" name="address" placeholder="542 W. 15th Street"></td>
-                    </tr>
-                    
-                 <tr>
-                      <td><label for="city"><i class="fa fa-institution"></i> City</label></td>
-                      <td><input type="text" id="city" class="adjust" name="city" placeholder="Lahore"></td>
-                 </tr>
-                 <tr>
-                    <td><a href="OrderDetails.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Update Profile<span class="lnr"></span></a></td>
-                    <tr>
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                          
+                                        <div class="d-flex">
+                                           
+                                            <img src="assets/images/food1.jpg" style ="height:100px; width:150px;">
+                                        </div>
+                                        <div class="media-body">
+                                            <h5> Mexican Eggrolls </h5>
+                                            <p>Special Mexican dish</p>
+                                        </div>
+
+                                    </div>
+                                </td>
+                               
+                                <td>
+
+                                   3
+                                </td>
+                                <td>
+                                     <select>
+                                    <option value = "Ready"> Ready </option>
+                                       <option value = "Not Ready"> Not Ready </option>
+                                   </select>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            
+                                            <img src="assets/images/food2.jpg" style ="height:100px; width:150px;" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h5> Chicken Burger </h5>
+                                            <p>Best burger with cheese</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    <select>
+                                    <option value = "Ready"> Ready </option>
+                                       <option value = "Not Ready"> Not Ready </option>
+                                   </select>
+                                </td>
+                                <td>
+                                   
+                                </td>
+                            </tr>
+                            
+                           
+                           
+                          
+                           
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
-  <!--myprofile form ends -->
+    <!--================End Cart Area =================-->
+
+    
+    
+    
 
     <!-- Footer Area Starts -->
     <footer class="footer-area" id="AboutUs">
@@ -189,7 +245,8 @@
                 </div>
             </div>
         </div>
-        
+       
+        </div>
     </footer>
     <!-- Footer Area End -->
 
