@@ -1,0 +1,245 @@
+﻿@model OnlineFoodCorner.Purchased_Item
+
+@{
+    ViewBag.Title = "Create";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Page Title -->
+    <title>Purchased Items</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logo/logo.png" type="image/x-icon">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="~/assets/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+<body>
+    <!-- Preloader Starts -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+    <!-- Header Area Starts -->
+    <header class="header-area header-area2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="logo-area">
+                        <a href="indexAdmin.html"><img src="~/assets/images/logo/logo.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="custom-navbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="main-menu main-menu2">
+                        <ul>
+                            <li><a href="indexAdmin.html">home</a></li>
+                            
+                            <li>
+                                <a href="menu.html">Manage Menu</a>
+
+                            </li>
+                            <li><a href="Manage Categories.html">Manage Food Categories</a>
+                            <li class="active">
+                                <a href="#">Manage Stock</a>
+                                <ul class="sub-menu">
+                                    <li><a href="@Url.Action("PurchasedItems","Purchased_Item")">Manage Purchased Items</a></li>
+                                    <li><a href="@Url.Action("ManageStock", "Categories")">Manage Catagories</a></li>
+                                    <li><a href="@Url.Action("ManageStockSuppliers","Suppliers")">Manage Suppliers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Order Assign to</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog-home.html">Chef</a></li>
+                                    <li><a href="blog-details.html">Vehicle</a></li>
+                                    <li><a href="blog-details.html">Deliverer</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("ManageEmployees","Employees")">Manage Employees</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+    <!-- Banner Area Starts -->
+    <section class="banner-area banner-area2 contact-bg text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1><i>Manage Stock</i></h1>
+                    <p class="pt-2"><i>Create Purchased Item</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Area End -->
+    <!-- create form Area starts -->
+
+    <section class="contact-form section-padding3">
+        <div class="container">
+
+            <div class="order_details_table">
+
+                <div class="table-responsive">
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Purchased_Item</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SupplierId, "SupplierId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("SupplierId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SupplierId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.QuantityPerUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.QuantityPerUnit, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.QuantityPerUnit, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.UnitsInStock, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                            <div style=" padding-left:12px;">
+                                @Html.ActionLink("Back to List", "PurchasedItems")
+                            </div>
+                        </div>
+                    }
+                    </div>
+                  </div>
+            </div>
+        </section>
+
+                    @section Scripts {
+                        @Scripts.Render("~/bundles/jqueryval")
+                    }
+                    <!-- create form Area ends -->
+                    <!-- Footer Area Starts -->
+                    <footer class="footer-area">
+                        <div class="footer-widget section-padding">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="single-widget single-widget1">
+                                            <a href="index.html"><img src="~/assets/images/logo/logo.png" alt=""></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="single-widget single-widget2 my-5 my-md-0">
+                                            <h5 class="mb-4">contact us</h5>
+                                            <div class="d-flex">
+                                                <div class="into-icon">
+                                                    <i class="fa fa-map-marker"></i>
+                                                </div>
+                                                <div class="info-text">
+                                                    <p>Cse Department, UET Lhr. </p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="into-icon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                <div class="info-text">
+                                                    <p>(123) 456 78 90</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="into-icon">
+                                                    <i class="fa fa-envelope-o"></i>
+                                                </div>
+                                                <div class="info-text">
+                                                    <p>uet@gmail.com</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="single-widget single-widget3">
+                                            <h5 class="mb-4">opening hours</h5>
+                                            <p>Monday ...................... Closed</p>
+                                            <p>Tue-Fri .............. 10 am - 12 pm</p>
+                                            <p>Sat-Sun ............... 8 am - 11 pm</p>
+                                            <p>Holidays ............. 10 am - 12 pm</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </footer>
+                    <!-- Footer Area End -->
+                    <!-- Javascript -->
+                    <script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>
+                    <script src="~/assets/js/vendor/bootstrap-4.1.3.min.js"></script>
+                    <script src="~/assets/js/vendor/wow.min.js"></script>
+
+                    <script src="~/assets/js/vendor/jquery.datetimepicker.full.min.js"></script>
+                    <script src="~/assets/js/vendor/jquery.nice-select.min.js"></script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I"></script>
+                    <script src="~/assets/js/vendor/gmaps.min.js"></script>
+                    <script src="~/assets/js/main.js"></script>
+</body>
+</html>

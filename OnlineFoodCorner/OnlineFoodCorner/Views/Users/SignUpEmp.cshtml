@@ -1,0 +1,118 @@
+﻿
+@model OnlineFoodCorner.Employee
+
+@{
+    ViewBag.Title = "SignUpEmp";
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up for Employee</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/assets/css/styleLogin.css">
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="main">
+
+            <div class="container" style="background-image: url('assets/images/Capture.jpg');">
+                <div class="booking-content">
+                    <div class="booking-image">
+                        <img class="booking-img" src="~/assets/images/Capture.jpg" alt="Booking Image">
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="booking-form">
+                        <form id="booking-form">
+                            <h2>SignUp for Admin</h2>
+                            <div class="form-group form-input">
+                                @Html.LabelFor(model => @Model.User.FirstName, htmlAttributes: new { @class = "form-group" })
+
+                                @Html.EditorFor(model => @Model.User.FirstName, new { htmlAttributes = new { @class = "form-group" } })
+                                @Html.ValidationMessageFor(model => @Model.User.FirstName, "", new { @class = "form-group" })
+                            </div>
+
+                            <div class="form-group form-input">
+                                @Html.LabelFor(model => @Model.User.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => @Model.User.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => @Model.User.LastName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group form-input">
+
+                                @Html.LabelFor(model => @Model.User.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => @Model.User.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => @Model.User.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group form-input">
+                                @Html.LabelFor(model => @Model.User.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => @Model.User.Contact, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => @Model.User.Contact, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => @Model.User.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => @Model.User.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => @Model.User.Password, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => @Model.User.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => @Model.User.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => @Model.User.Address, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group form-input">
+                                @Html.LabelFor(model => @Model.User.City, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => @Model.User.City, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => @Model.User.City, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group form-input">
+                                @Html.LabelFor(model => model.EmployeeRegNo, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.EmployeeRegNo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmployeeRegNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group form-input">
+                                @Html.LabelFor(model => model.HireDate, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+                            </div>
+
+
+
+                            <div class="form-submit">
+                                <input type="submit" value="SignUp" class="submit" id="submit" name="submit" />
+                                <a href="@Url.Action("LogIn", "Users")" class="vertify-booking">Already Have an account?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    }
+    <!-- JS -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

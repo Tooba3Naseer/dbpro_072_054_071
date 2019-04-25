@@ -1,0 +1,70 @@
+﻿@model OnlineFoodCorner.User
+
+@{
+    ViewBag.Title = "LogIn";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LogIn</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/assets/css/styleLogin.css">
+</head>
+<body>
+    @using (Html.BeginForm("LogIn", "Users", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="main">
+
+            <div class="container" style="background-image: url('~/assets/images/Capture.jpg');">
+                <div class="booking-content">
+                    <div class="booking-image">
+                        <img class="booking-img" src="~/assets/images/Capture.jpg" alt="Booking Image">
+                    </div>
+                    <div class="booking-form">
+
+                        <form id="booking-form">
+                            <h2>LogIn On Online FoodCorner</h2>
+
+                            <div class="form-group form-input">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+
+
+                            <div class="form-submit">
+                                <input type="submit" value="LogIn" class="submit" id="submit" name="LogIn" />
+                                <a href="@Url.Action("SignUpC", "Users")" class="vertify-booking">Create your Account</a>
+                            </div>
+                        </form>
+
+</div>
+</div>
+</div>
+
+</div>
+    }
+<!-- JS -->
+<script src="~/assets/vendor/jquery/jquery.min.js"></script>
+<script src="~/assets/js/mainLogin.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
