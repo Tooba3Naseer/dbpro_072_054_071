@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OnlineFoodCorner;
+using System.IO;
 
 namespace OnlineFoodCorner.Controllers
 {
@@ -15,22 +16,12 @@ namespace OnlineFoodCorner.Controllers
         private DB24Entities db = new DB24Entities();
 
         // GET: MenuCards
-        public ActionResult Index()
+        public ActionResult MenuItems()
         {
             var menuCards = db.MenuCards.Include(m => m.FoodCategory);
             return View(menuCards.ToList());
         }
-        /*
-        public FileContentResult show(int id)
-        {
-           
-            MenuCard menuCard = db.MenuCards.Find(id);
-            /*var imagedata = menuCard.Picture;
-            return File(imagedata, "image/jpg");*/
 
-
-            /*return new FileContentResult(menuCard.Picture);   
-        }*/
         // GET: MenuCards/Details/5
         public ActionResult Details(int? id)
         {
@@ -58,21 +49,20 @@ namespace OnlineFoodCorner.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FoodId,Name,Description,QuantityPerUnit,UnitPrice,Picture,CategoryId")] MenuCard menuCard, HttpPostedFileBase imgname)
+        public ActionResult Create( MenuCard menuCard)
         {
-            if(imgname != null)
+            string filename = Path.GetFileNameWithoutExtension(menuCard.ImageFile.FileName);
+            string extension = Path.GetExtension(menuCard.ImageFile.FileName);
+            filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+            menuCard.ImagePath = "~/assets/images/" + filename;
+            filename = Path.Combine(Server.MapPath("~/assets/images/"), filename);
+            menuCard.ImageFile.SaveAs(filename);
+            if (ModelState.IsValid)
             {
-                menuCard.Picture = new byte[imgname.ContentLength];
-                imgname.InputStream.Read(menuCard.Picture, 0, imgname.ContentLength);
-                if (ModelState.IsValid)
-                {
-                    db.MenuCards.Add(menuCard);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
+                db.MenuCards.Add(menuCard);
+                db.SaveChanges();
+                return RedirectToAction("MenuItems");
             }
-           
 
             ViewBag.CategoryId = new SelectList(db.FoodCategories, "Id", "CategoryName", menuCard.CategoryId);
             return View(menuCard);
@@ -99,13 +89,14 @@ namespace OnlineFoodCorner.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FoodId,Name,Description,QuantityPerUnit,UnitPrice,Picture,CategoryId")] MenuCard menuCard)
+        public ActionResult Edit([Bind(Include = "FoodId,Name,Description,QuantityPerUnit,UnitPrice,ImagePath,CategoryId")] MenuCard menuCard)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(menuCard).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MenuItems");
             }
             ViewBag.CategoryId = new SelectList(db.FoodCategories, "Id", "CategoryName", menuCard.CategoryId);
             return View(menuCard);
@@ -134,7 +125,7 @@ namespace OnlineFoodCorner.Controllers
             MenuCard menuCard = db.MenuCards.Find(id);
             db.MenuCards.Remove(menuCard);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MenuItems");
         }
 
         protected override void Dispose(bool disposing)
