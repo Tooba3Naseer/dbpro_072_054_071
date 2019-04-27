@@ -26,14 +26,13 @@
         <div class="spinner"></div>
     </div>
     <!-- Preloader End -->
-
     <!-- Header Area Starts -->
-	<header class="header-area header-area2">
+    <header class="header-area header-area2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo-area">
-                        <a href="index.html"><img src="~/assets/images/logo/logo.png" alt="logo"></a>
+                        <a href="indexAdmin.html"><img src="~/assets/images/logo/logo.png" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -41,26 +40,47 @@
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>  
+                    </div>
                     <div class="main-menu main-menu2">
                         <ul>
-                            <li class="active"><a href="index.html">home</a></li>
-                            <li><a href="about.html">about</a></li>
-                            <li><a href="menu.html">Manage Food Items</a>
-                             
-                            </li>
-                              <li><a href="Manage Categories.html">Manage Food Categories</a>
-                             
-                            </li>
-                            <li><a href="#">Order Assign to</a>
+                            <li class="active"><a href="@Url.Action("indexAdmin","Home")">home</a></li>
+
+                            <li>
+                                <a href="#">Manage Menu</a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog-home.html">Chef</a></li>
-                                    <li><a href="blog-details.html">Vehicle</a></li>
-                                    <li><a href="blog-details.html">Deliverer</a></li>
+                                    <li><a href="@Url.Action("MenuItems","MenuCards")">Manage Menu Items</a></li>
+                                    <li><a href="@Url.Action("FoodCategories", "FoodCategories" )">Manage Items Catagories</a></li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="active">
+                                <a href="#">Manage Stock</a>
+                                <ul class="sub-menu">
+                                    <li><a href="@Url.Action("PurchasedItems","Purchased_Item")">Manage Purchased Items</a></li>
+                                    <li><a href="@Url.Action("ManageStock", "Categories" )">Manage Catagories</a></li>
+                                    <li><a href="@Url.Action("ManageStockSuppliers","Suppliers")">Manage Suppliers</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact-us.html">Inbox</a></li>
-                          
+
+                            <li>
+                                <a href="#">Manage Orders</a>
+                                <ul class="sub-menu">
+                                    <li><a href="@Url.Action("OrdersIndex","Orders")">Orders Details</a></li>
+                                    <li><a href="@Url.Action("ChefOIndex","ChefOrders")">Assign to Chef</a></li>
+                                    <li><a href="@Url.Action("OrdersDeliveryTeam","Orders_DeliveryTeam")">Assign to Delivery Team</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("ManageEmployees","Employees")">Manage Employees</a></li>
+                            <li>
+                                <a href="menu.html">Manage Others</a>
+                                <ul class="sub-menu">
+                                    <li><a href="@Url.Action("ManageDeliveryTeam","Delivery_Team")">Manage Delivery Teams</a></li>
+                                    <li><a href="@Url.Action("ManageTeam","TeamMembers")">Manage Team Members</a></li>
+                                </ul>
+                            </li>
+                            <li class="active"><a href="@Url.Action("Index","Home")">Log Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,21 +88,21 @@
         </div>
     </header>
     <!-- Header Area End -->
-
     <!-- Banner Area Starts -->
     <section class="banner-area text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h6>Taste the most interesting food in Pakistan </h6>
-                    <h1>Discover the <span class="prime-color">flavors</span><br>  
-                    <span class="style-change">of <span class="prime-color">Pakistan</span>FoodCourt</span></h1>
+                    <h1>
+                        Discover the <span class="prime-color">flavors</span><br>
+                        <span class="style-change">of <span class="prime-color">Pakistan</span>FoodCourt</span>
+                    </h1>
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
-
     <!-- Welcome Area Starts -->
     <section class="welcome-area section-padding2">
         <div class="container-fluid">
@@ -95,7 +115,7 @@
                 <div class="col-md-6 align-self-center">
                     <div class="welcome-text mt-5 mt-md-0">
                         <h3><span class="style-change">Welcome</span> <br>to Pakistan Online FoodCourt</h3>
-                       
+
                         <a href="#" class="template-btn mt-3">Book Your Order Here</a>
                     </div>
                 </div>
@@ -103,7 +123,6 @@
         </div>
     </section>
     <!-- Welcome Area End -->
-
     <!-- Food Area starts -->
     <section class="food-area section-padding">
         <div class="container">
@@ -111,14 +130,14 @@
                 <div class="col-md-5">
                     <div class="section-top">
                         <h3><span class="style-change">Menu Details</span></h3>
-                       
+
                     </div>
                 </div>
             </div>
             <div class="row">
-                
-               
-               
+
+
+
                 <div class="col-md-4 col-sm-6">
                     <div class="single-food mt-5">
                         <div class="food-img">
@@ -161,16 +180,17 @@
                         </div>
                     </div>
                 </div>
-                    <ul>
-                        <h3><a href="#" class="template-btn mt-3">Add Food Items</a>
-                                <a href="#" class="template-btn mt-3">Delete Food Items</a></h3>
-                                </ul>
-                </div>
+                <ul>
+                    <h3>
+                        <a href="#" class="template-btn mt-3">Add Food Items</a>
+                        <a href="#" class="template-btn mt-3">Delete Food Items</a>
+                    </h3>
+                </ul>
             </div>
+        </div>
         </div>
     </section>
     <!-- Food Area End -->
-
     <!-- Reservation Area Starts -->
     <div class="reservation-area section-padding text-center">
         <div class="container">
@@ -184,7 +204,6 @@
         </div>
     </div>
     <!-- Reservation Area End -->
-    
     <!-- Deshes Area Starts -->
     <div class="deshes-area section-padding">
         <div class="container">
@@ -227,9 +246,6 @@
         </div>
     </div>
     <!-- Deshes Area End -->
-
-   
-
     <!-- Update Area Starts -->
     <section class="update-area section-padding">
         <div class="container">
@@ -294,10 +310,6 @@
         </div>
     </section>
     <!-- Update Area End -->
-
-   
-
-
     <!-- Footer Area Starts -->
     <footer class="footer-area">
         <div class="footer-widget section-padding">
@@ -306,7 +318,7 @@
                     <div class="col-md-4">
                         <div class="single-widget single-widget1">
                             <a href="index.html"><img src="assets/images/logo/logo.png" alt=""></a>
-                          
+
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -354,7 +366,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 col-md-6">
-                        
+
                     </div>
                     <div class="col-lg-5 col-md-6">
                         <div class="social-icons">
@@ -373,11 +385,9 @@
         </div>
     </footer>
     <!-- Footer Area End -->
-
-
     <!-- Javascript -->
     <script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="~/assets/js/vendor/bootstrap-4.1.3.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap-4.1.3.min.js"></script>
     <script src="~/assets/js/vendor/wow.min.js"></script>
     <script src="~/assets/js/vendor/owl-carousel.min.js"></script>
     <script src="~/assets/js/vendor/jquery.datetimepicker.full.min.js"></script>

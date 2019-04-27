@@ -48,31 +48,44 @@
                     </div>
                     <div class="main-menu main-menu2">
                         <ul>
-                            <li><a href="indexAdmin.html">home</a></li>
-                            
+                            <li class="active"><a href="@Url.Action("indexAdmin","Home")">home</a></li>
+
                             <li>
-                                <a href="menu.html">Manage Menu</a>
+                                <a href="#">Manage Menu</a>
+                                <ul class="sub-menu">
+                                    <li><a href="@Url.Action("MenuItems","MenuCards")">Manage Menu Items</a></li>
+                                    <li><a href="@Url.Action("FoodCategories", "FoodCategories" )">Manage Items Catagories</a></li>
+
+                                </ul>
 
                             </li>
-                            <li><a href="Manage Categories.html">Manage Food Categories</a>
+
                             <li class="active">
                                 <a href="#">Manage Stock</a>
                                 <ul class="sub-menu">
                                     <li><a href="@Url.Action("PurchasedItems","Purchased_Item")">Manage Purchased Items</a></li>
-                                    <li><a href="@Url.Action("ManageStock", "Categories")">Manage Catagories</a></li>
+                                    <li><a href="@Url.Action("ManageStock", "Categories" )">Manage Catagories</a></li>
                                     <li><a href="@Url.Action("ManageStockSuppliers","Suppliers")">Manage Suppliers</a></li>
                                 </ul>
                             </li>
+
                             <li>
-                                <a href="#">Order Assign to</a>
+                                <a href="#">Manage Orders</a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog-home.html">Chef</a></li>
-                                    <li><a href="blog-details.html">Vehicle</a></li>
-                                    <li><a href="blog-details.html">Deliverer</a></li>
+                                    <li><a href="@Url.Action("OrdersIndex","Orders")">Orders Details</a></li>
+                                    <li><a href="@Url.Action("ChefOIndex","ChefOrders")">Assign to Chef</a></li>
+                                    <li><a href="@Url.Action("OrdersDeliveryTeam","Orders_DeliveryTeam")">Assign to Delivery Team</a></li>
                                 </ul>
                             </li>
                             <li><a href="@Url.Action("ManageEmployees","Employees")">Manage Employees</a></li>
-
+                            <li>
+                                <a href="menu.html">Manage Others</a>
+                                <ul class="sub-menu">
+                                    <li><a href="@Url.Action("ManageDeliveryTeam","Delivery_Team")">Manage Delivery Teams</a></li>
+                                    <li><a href="@Url.Action("ManageTeam","TeamMembers")">Manage Team Members</a></li>
+                                </ul>
+                            </li>
+                            <li class="active"><a href="@Url.Action("Index","Home")">Log Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -112,49 +125,49 @@
                     {
                         @Html.AntiForgeryToken()
 
-                    <div class="form-horizontal">
-                        <h4>Category</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.CategoryId)
+                        <div class="form-horizontal">
+                            <h4>Category</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.CategoryId)
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                            <div style="padding-left:15px;">
+                                @Html.ActionLink("Back to List", "ManageStock")
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-default" />
-                            </div>
-                        </div>
-                        <div style="padding-left:15px;">
-                            @Html.ActionLink("Back to List", "ManageStock")
-                        </div>
-                    </div>
 
                     }
-                    
+
                 </div>
             </div>
         </div>
     </section>
 
-    
 
-   <!-- Edit Area Ends -->
+
+    <!-- Edit Area Ends -->
     <!-- Footer Area Starts -->
     <footer class="footer-area">
         <div class="footer-widget section-padding">

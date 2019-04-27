@@ -1,11 +1,8 @@
-﻿@model IEnumerable<OnlineFoodCorner.MenuCard>
+﻿@model OnlineFoodCorner.ChefOrder
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Edit";
 }
-
-
-
 <html lang="en">
 <head>
     <!-- Required Meta Tags -->
@@ -14,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>Menu Card Items</title>
+    <title>Assign Chef to Orders</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="~/assets/images/logo/logo.png" type="image/x-icon">
@@ -32,7 +29,6 @@
         <div class="spinner"></div>
     </div>
     <!-- Preloader End -->
-    <!-- Header Area Starts -->
     <!-- Header Area Starts -->
     <header class="header-area header-area2">
         <div class="container">
@@ -100,89 +96,72 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1><i>Manage Menu</i></h1>
-                    <p class="pt-2"><i>Manage Menu Items</i></p>
+                    <h1><i>Assign Order to Chef</i></h1>
+                    <p class="pt-2"><i>Edit</i></p>
+
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
-    <!-- food Form Starts -->
+    <!-- orders Form Starts -->
     <section class="contact-form section-padding3">
         <div class="container">
 
             <div class="order_details_table">
 
                 <div class="table-responsive">
-                    <h2>Index</h2>
-
-                    <p style="padding-left:12px;">
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
-                    <table class="table">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ImagePath)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Name)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Description)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.QuantityPerUnit)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.UnitPrice)
-                            </th>
-
-                            <th>
-                                @Html.DisplayNameFor(model => model.FoodCategory.CategoryName)
-                            </th>
-                            <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    <img src="@Url.Content(item.ImagePath)" width="100" height="100" />
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.QuantityPerUnit)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UnitPrice)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FoodCategory.CategoryName)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.FoodId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.FoodId }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.FoodId })
-                                </td>
-                            </tr>
-                        }
-
-                    </table>
+                    <h2>Edit</h2>
 
 
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
+                        <div class="form-horizontal">
+                            <h4>ChefOrder</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.OrderId)
+
+                            @Html.HiddenFor(model => model.ChefId)
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AssignmentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.AssignmentDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AssignmentDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "ChefOIndex")
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
-    <!-- food Form Ends -->
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <!-- orders Form Ends -->
     <!-- Footer Area Starts -->
     <footer class="footer-area">
         <div class="footer-widget section-padding">

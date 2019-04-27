@@ -1,8 +1,9 @@
-﻿@model IEnumerable<OnlineFoodCorner.MenuCard>
+﻿@model IEnumerable<OnlineFoodCorner.Orders_DeliveryTeam>
 
 @{
     ViewBag.Title = "Index";
 }
+
 
 
 
@@ -14,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>Menu Card Items</title>
+    <title>Orders Details</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="~/assets/images/logo/logo.png" type="image/x-icon">
@@ -32,7 +33,6 @@
         <div class="spinner"></div>
     </div>
     <!-- Preloader End -->
-    <!-- Header Area Starts -->
     <!-- Header Area Starts -->
     <header class="header-area header-area2">
         <div class="container">
@@ -100,14 +100,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1><i>Manage Menu</i></h1>
-                    <p class="pt-2"><i>Manage Menu Items</i></p>
+                    <h1><i>Assign Order to Delivery Team</i></h1>
+
+
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
-    <!-- food Form Starts -->
+    <!-- orders Form Starts -->
     <section class="contact-form section-padding3">
         <div class="container">
 
@@ -115,30 +116,23 @@
 
                 <div class="table-responsive">
                     <h2>Index</h2>
-
                     <p style="padding-left:12px;">
                         @Html.ActionLink("Create New", "Create")
                     </p>
                     <table class="table">
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.ImagePath)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Name)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Description)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.QuantityPerUnit)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.UnitPrice)
+                                @Html.DisplayNameFor(model => model.Order.OrderId)
                             </th>
 
                             <th>
-                                @Html.DisplayNameFor(model => model.FoodCategory.CategoryName)
+                                @Html.DisplayNameFor(model => model.Delivery_Team.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AssignmentDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Order.DeliveryAddress)
                             </th>
                             <th></th>
                         </tr>
@@ -147,28 +141,21 @@
                         {
                             <tr>
                                 <td>
-                                    <img src="@Url.Content(item.ImagePath)" width="100" height="100" />
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.QuantityPerUnit)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                                    @Html.DisplayFor(modelItem => item.Order.OrderId)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.FoodCategory.CategoryName)
+                                    @Html.DisplayFor(modelItem => item.Delivery_Team.Name)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.FoodId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.FoodId }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.FoodId })
+                                    @Html.DisplayFor(modelItem => item.AssignmentDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Order.DeliveryAddress)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
                                 </td>
                             </tr>
                         }
@@ -177,12 +164,13 @@
 
 
 
+
                 </div>
 
             </div>
         </div>
     </section>
-    <!-- food Form Ends -->
+    <!-- orders Form Ends -->
     <!-- Footer Area Starts -->
     <footer class="footer-area">
         <div class="footer-widget section-padding">

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Data.Entity;
 using OnlineFoodCorner;
 
 namespace OnlineFoodCorner.Controllers
 {
     public class HomeController : Controller
     {
+        private DB24Entities db = new DB24Entities();
         public ActionResult CustomerIndex()
         {
             return View();
@@ -24,9 +26,25 @@ namespace OnlineFoodCorner.Controllers
             return View();
         }
 
-        public ActionResult ManageStock()
+        
+        public ActionResult feedback()
         {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult feedback([Bind(Include = "Id,comment,CustomerId")]Feedback fb)
+        {
+            int id = UsersController.customerid;
+            fb.CustomerId = id;
+            if (ModelState.IsValid)
+            {
+                db.Feedbacks.Add(fb);
+                db.SaveChanges();
+                return RedirectToAction("CustomerIndex");
+            }
+            return View(fb);
+            
         }
 
         public ActionResult LogIn()

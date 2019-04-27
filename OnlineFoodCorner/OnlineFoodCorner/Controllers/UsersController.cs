@@ -12,6 +12,7 @@ namespace OnlineFoodCorner.Controllers
 {
     public class UsersController : Controller
     {
+        public static int customerid = 0;
         private DB24Entities db = new DB24Entities();
 
         // GET: Users
@@ -72,8 +73,10 @@ namespace OnlineFoodCorner.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    
                     db.Users.Add(user);
                     customer.Id = user.Id;
+                    customerid = customer.Id;
                     customer.RegistrationDate = DateTime.Now;
                     db.Customers.Add(customer);
                     db.SaveChanges();
@@ -120,7 +123,9 @@ namespace OnlineFoodCorner.Controllers
 
                     Customer customer = db.Customers.FirstOrDefault(u => u.Id == (user1.Id));
                     if (customer != null)
-                            return RedirectToAction("CustomerIndex", "Home");
+                    {
+                        customerid = customer.Id;
+                        return RedirectToAction("CustomerIndex", "Home"); }
                     Employee emp = db.Employees.FirstOrDefault(u => u.EmployeeId == (user1.Id));
                     if (emp != null)
                         {
