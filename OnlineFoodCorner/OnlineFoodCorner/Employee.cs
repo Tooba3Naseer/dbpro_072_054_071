@@ -30,12 +30,12 @@ namespace OnlineFoodCorner
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChefOrder> ChefOrders { get; set; }
+        public virtual Designation Designation { get; set; }
         public virtual EmployeeType EmployeeType { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeamMember> TeamMembers { get; set; }
-        public virtual Designation Designation { get; set; }
     }
 }

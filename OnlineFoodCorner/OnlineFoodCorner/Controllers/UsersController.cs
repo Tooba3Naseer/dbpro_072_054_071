@@ -13,7 +13,8 @@ namespace OnlineFoodCorner.Controllers
     public class UsersController : Controller
     {
         public static int customerid = 0;
-        private DB24Entities db = new DB24Entities();
+		public static int employeeid = 0;
+		private DB24Entities db = new DB24Entities();
 
         // GET: Users
         public ActionResult Index()
@@ -241,8 +242,71 @@ namespace OnlineFoodCorner.Controllers
             
         }
 
-        // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
+
+
+		public ActionResult MyChefProfile()
+		{
+			int id = UsersController.employeeid;
+
+			User user = db.Users.Find(id);
+			if (user == null)
+			{
+				return HttpNotFound();
+			}
+			ViewBag.Id = new SelectList(db.Customers, "Id", "Id", user.Id);
+			ViewBag.Id = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", user.Id);
+			return View(user);
+		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult MyChefProfile([Bind(Include = "Id,FirstName,LastName,Email,Contact,Password,Address,City")] User user)
+		{
+			if (ModelState.IsValid)
+			{
+				db.Entry(user).State = EntityState.Modified;
+				db.SaveChanges();
+				return RedirectToAction("CookIndex", "Home");
+			}
+			ViewBag.Id = new SelectList(db.Customers, "Id", "Id", user.Id);
+			ViewBag.Id = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", user.Id);
+			return View(user);
+
+		}
+
+
+
+		public ActionResult MyDelProfile()
+		{
+			int id = UsersController.employeeid;
+
+			User user = db.Users.Find(id);
+			if (user == null)
+			{
+				return HttpNotFound();
+			}
+			ViewBag.Id = new SelectList(db.Customers, "Id", "Id", user.Id);
+			ViewBag.Id = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", user.Id);
+			return View(user);
+		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult MyDelProfile([Bind(Include = "Id,FirstName,LastName,Email,Contact,Password,Address,City")] User user)
+		{
+			if (ModelState.IsValid)
+			{
+				db.Entry(user).State = EntityState.Modified;
+				db.SaveChanges();
+				return RedirectToAction("CookIndex", "Home");
+			}
+			ViewBag.Id = new SelectList(db.Customers, "Id", "Id", user.Id);
+			ViewBag.Id = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", user.Id);
+			return View(user);
+
+		}
+
+
+		// GET: Users/Edit/5
+		public ActionResult Edit(int? id)
         {
             if (id == null)
             {

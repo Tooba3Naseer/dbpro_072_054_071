@@ -27,6 +27,11 @@ namespace OnlineFoodCorner.Controllers
             return View();
         }
 
+		public ActionResult CookIndex()
+		{
+			return View();
+		}
+
         
        
 
