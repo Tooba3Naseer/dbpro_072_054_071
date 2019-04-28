@@ -125,6 +125,12 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Employee.EmployeeRegNo)
                                 </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Employee.User.FirstName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Employee.User.LastName)
+                                </th>
 
                                 <th>
                                     @Html.DisplayNameFor(model => model.AssignmentDate)
@@ -137,27 +143,33 @@
 
                             @foreach (var item in Model)
                             {
-                                <tr>
+                            <tr>
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Order.OrderId)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Employee.EmployeeRegNo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AssignmentDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Order.OrderId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Employee.EmployeeRegNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Employee.User.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Employee.User.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AssignmentDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
 
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.OrderId, id1 = item.ChefId }) |
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderId, id1 = item.ChefId }) |
 
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderId, id1 = item.ChefId })
-                                    </td>
-                                </tr>
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId, id1 = item.ChefId })
+                                </td>
+                            </tr>
                             }
 
                         </table>
