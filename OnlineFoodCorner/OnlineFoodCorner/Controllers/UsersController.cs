@@ -36,6 +36,60 @@ namespace OnlineFoodCorner.Controllers
             }
             return View(user);
         }
+        public ActionResult MyProfile()
+        {
+            int id = UsersController.customerid;
+
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Id = new SelectList(db.Customers, "Id", "Id", user.Id);
+            ViewBag.Id = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", user.Id);
+            return View(user);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MyProfile([Bind(Include = "Id,FirstName,LastName,Email,Contact,Password,Address,City")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("CustomerIndex", "Home");
+            }
+            ViewBag.Id = new SelectList(db.Customers, "Id", "Id", user.Id);
+            ViewBag.Id = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", user.Id);
+            return View(user);
+
+        }
+
+        public ActionResult feedback()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult feedback([Bind(Include = "Id,comment,CustomerId")]Feedback fb)
+        {
+            int id = UsersController.customerid;
+            fb.CustomerId = id;
+            if (ModelState.IsValid)
+            {
+                db.Feedbacks.Add(fb);
+                db.SaveChanges();
+                return RedirectToAction("CustomerIndex", "Home");
+            }
+            return View(fb);
+
+        }
+
+        public ActionResult OthersFeedback()
+        {
+  
+            return View(db.Feedbacks.ToList());
+        }
 
         // GET: Users/Create
         public ActionResult SignUpC()
