@@ -73,3 +73,7 @@ F:\c# projects\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.cspr
 F:\c# projects\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.dll
 F:\c# projects\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.pdb
 F:\c# projects\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.csprojAssemblyReference.cache
+C:\Users\Asus\Documents\GitHub\dbpro_072_054_071\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.csprojAssemblyReference.cache
+C:\Users\Asus\Documents\GitHub\dbpro_072_054_071\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Documents\GitHub\dbpro_072_054_071\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.dll
+C:\Users\Asus\Documents\GitHub\dbpro_072_054_071\OnlineFoodCorner\OnlineFoodCorner\obj\Debug\OnlineFoodCorner.pdb
