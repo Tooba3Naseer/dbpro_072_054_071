@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Net;
 using System.Web.Mvc;
 using System.Data.Entity;
 using OnlineFoodCorner;
@@ -27,32 +28,9 @@ namespace OnlineFoodCorner.Controllers
         }
 
         
-        public ActionResult feedback()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult feedback([Bind(Include = "Id,comment,CustomerId")]Feedback fb)
-        {
-            int id = UsersController.customerid;
-            fb.CustomerId = id;
-            if (ModelState.IsValid)
-            {
-                db.Feedbacks.Add(fb);
-                db.SaveChanges();
-                return RedirectToAction("CustomerIndex");
-            }
-            return View(fb);
-            
-        }
+       
 
-        public ActionResult LogIn()
-        {
-            return View();
-        }
-        
-        public ActionResult About()
+            public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
