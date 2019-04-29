@@ -27,10 +27,20 @@ namespace OnlineFoodCorner.Controllers
             return View();
         }
 
-        
-       
+		public ActionResult CookIndex()
+		{
+			return View();
+		}
 
-            public ActionResult About()
+		public ActionResult DelIndex()
+		{
+			return View();
+		}
+
+
+
+
+		public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
