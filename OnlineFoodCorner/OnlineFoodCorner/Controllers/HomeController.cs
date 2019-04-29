@@ -32,6 +32,7 @@ namespace OnlineFoodCorner.Controllers
 			return View();
 		}
 
+<<<<<<< HEAD
 		public ActionResult DelIndex()
 		{
 			return View();
@@ -39,6 +40,10 @@ namespace OnlineFoodCorner.Controllers
 
 
 
+=======
+        
+       
+>>>>>>> 6c5fd5f7568142edff38730bb1acfa3e8de5f477
 
 		public ActionResult About()
         {
