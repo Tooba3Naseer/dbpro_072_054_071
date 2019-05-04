@@ -1,0 +1,278 @@
+﻿@model IEnumerable<OnlineFoodCorner.Orders_DeliveryTeam>
+
+@{
+	ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required Meta Tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="assests/images/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="CodePixar">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+
+
+
+	<!-- Page Title -->
+	<title>Delivery</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/assets/images/logo/favicon.png" type="image/x-icon">
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="~/assets/css/linearicons.css">
+	<link rel="stylesheet" href="~/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="~/assets/css/main.css">
+
+
+
+
+	<link rel="stylesheet" href="~/assets/css/animate-3.7.0.css">
+	<link rel="stylesheet" href="~/assets/css/font-awesome-4.7.0.min.css">
+	<link rel="stylesheet" href="~/assets/fonts/flat-icon/flaticon.css">
+	<link rel="stylesheet" href="~/assets/css/bootstrap-4.1.3.min.css">
+	<link rel="stylesheet" href="~/assets/css/owl-carousel.min.css">
+	<link rel="stylesheet" href="~/assets/css/nice-select.css">
+	<link rel="stylesheet" href="~/assets/css/style.css">
+
+
+
+</head>
+<body>
+	<!-- Preloader Starts -->
+	<div class="preloader">
+		<div class="spinner"></div>
+	</div>
+	<!-- Preloader End -->
+	<!-- Header Area Starts -->
+	<header class="header-area header-area2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="logo-area">
+						<a href="index.html"><img src="~/assets/images/logo/l1.png" alt="logo"></a>
+					</div>
+				</div>
+				<div class="col-lg-10">
+					<div class="custom-navbar">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="main-menu main-menu2">
+						<ul>
+
+							<li class="active"><a href="@Url.Action("DelIndex","Home")">Home</a></li>
+
+
+
+
+							<li><a href="@Url.Action("ordertodeliver","Orders_DeliveryTeam1")">Order Details</a></li>
+
+							<li>
+								<a href="@Url.Action("MyDelProfile","Users")">My Profile</a>
+
+							</li>
+
+							<li>
+								<a href="@Url.Action("deliveredorder","Orders_DeliveryTeam1")">Delivered Orders</a>
+
+							</li>
+
+							<li>
+								<a href="@Url.Action("Index","Home")">LogOut</a>
+
+							</li>
+							<li><a href="#AboutUs">About</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- Header Area End -->
+	<!-- Banner Area Starts -->
+	<section class="banner-area banner-area2 blog-page text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1><i>Orders Delivery Details</i></h1>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Banner Area End -->
+	<!--================Cart Area =================-->
+
+	<section class="cart_area">
+		<div class="container">
+			<div class="cart_inner">
+				<div class="table-responsive">
+					<table class="table">
+
+						<tr>
+
+
+							<th>
+								@Html.DisplayNameFor(model => model.Delivery_Team.Name)
+							</th>
+							<th></th>
+							<th>
+								@Html.DisplayNameFor(model => model.Order.CustomerId)
+							</th>
+							<th></th>
+							<th>
+								@Html.DisplayNameFor(model => model.OrderId)
+							</th>
+							<th></th>
+							<th>
+								@Html.DisplayNameFor(model => model.AssignmentDate)
+							</th>
+							<th></th>
+							<th>
+								@Html.DisplayNameFor(model => model.Order.DeliveryStatus)
+							</th>
+							<th></th>
+							<th>
+								@Html.DisplayNameFor(model => model.Order.BillingStatus)
+							</th>
+
+							<th></th>
+							<th>
+								@Html.DisplayNameFor(model => model.Order.TotalBill)
+							</th>
+
+
+
+							<th></th>
+						</tr>
+
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									@Html.DisplayFor(modelItem => item.Delivery_Team.Name)
+								</td>
+								<td></td>
+
+								<td>
+									@Html.DisplayFor(modelItem => item.Order.CustomerId)
+								</td>
+								<td></td>
+								<td>
+									@Html.DisplayFor(modelItem => item.OrderId)
+								</td>
+								<td></td>
+								<td>
+									@Html.DisplayFor(modelItem => item.AssignmentDate)
+								</td>
+								<td></td>
+
+								<td>
+									@Html.DisplayFor(modelItem => item.Order.DeliveryStatus)
+								</td>
+								<td></td>
+								<td>
+									@Html.DisplayFor(modelItem => item.Order.BillingStatus)
+								</td>
+								<td></td>
+								<td>
+									@Html.DisplayFor(modelItem => item.Order.TotalBill)
+								</td>
+
+
+
+							</tr>
+						}
+
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Cart Area =================-->
+	<!-- Footer Area Starts -->
+	<footer class="footer-area" id="AboutUs">
+		<div class="footer-widget section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="single-widget single-widget1">
+							<a><img src="~/assets/images/logo/l1.png" alt=""></a>
+							<p class="mt-3">Online food corner delivers delicious food on order on your door step.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="single-widget single-widget2 my-5 my-md-0">
+							<h5 class="mb-4">Contact Us</h5>
+							<div class="d-flex">
+								<div class="into-icon">
+									<i class="fa fa-map-marker"></i>
+								</div>
+								<div class="info-text">
+									<p>UET, lahore </p>
+								</div>
+							</div>
+							<div class="d-flex">
+								<div class="into-icon">
+									<i class="fa fa-phone"></i>
+								</div>
+								<div class="info-text">
+									<p>0900-78601</p>
+								</div>
+							</div>
+							<div class="d-flex">
+								<div class="into-icon">
+									<i class="fa fa-envelope-o"></i>
+								</div>
+								<div class="info-text">
+									<p>anmoltariqbutt@gmail.com</p>
+									<p>toobanaseer3@gmail.com</p>
+									<p>ridamahmood175@gmail.com</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="single-widget single-widget3">
+							<h5 class="mb-4">opening hours</h5>
+							<p>Monday ...................... Closed</p>
+							<p>Tue-Fri .............. 10 am - 12 pm</p>
+							<p>Sat-Sun ............... 8 am - 11 pm</p>
+							<p>Holidays ............. 10 am - 12 pm</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</footer>
+	<!-- Footer Area End -->
+	<!-- Javascript -->
+	<script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="~/assets/js/vendor/bootstrap-4.1.3.min.js"></script>
+	<script src="~/assets/js/vendor/wow.min.js"></script>
+	<script src="~/assets/js/vendor/owl-carousel.min.js"></script>
+	<script src="~/assets/js/vendor/jquery.datetimepicker.full.min.js"></script>
+	<script src="~/assets/js/vendor/jquery.nice-select.min.js"></script>
+	<script src="~/assets/js/main.js"></script>
+</body>
+</html>
+

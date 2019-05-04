@@ -14,6 +14,7 @@ namespace OnlineFoodCorner.Controllers
     {
         public static int customerid = 0;
 		public static int employeeid = 0;
+		public static int Orderid ;
 		private DB24Entities db = new DB24Entities();
 
         // GET: Users
@@ -214,15 +215,19 @@ namespace OnlineFoodCorner.Controllers
                             EmployeeType type2 = db.EmployeeTypes.FirstOrDefault(u => u.Type == "Chef");
                         if(type.Id == emp.EmployeeTypeId)
                         {
+							
                             return RedirectToAction("indexAdmin", "Home");
                         }
                         if (type1.Id == emp.EmployeeTypeId)
                         {
-                            return RedirectToAction("indexAdmin", "Home");
+							employeeid = emp.EmployeeId;
+							return RedirectToAction("DelIndex", "Home");
                         }
                         if (type2.Id == emp.EmployeeTypeId)
                         {
-                            return RedirectToAction("indexAdmin", "Home");
+							employeeid = emp.EmployeeId;
+
+							return RedirectToAction("CookIndex", "Home");
                         }
 
                     }
