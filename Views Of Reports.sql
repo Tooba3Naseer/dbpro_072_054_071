@@ -63,18 +63,13 @@ Select Concat(FirstName, LastName) As CustomerName , comment As Feedback From ((
  ((ChefOrder JOIN Employee ON Employee.EmployeeId = ChefOrder.ChefId) JOIN Users ON Users.Id = Employee.EmployeeId)  
 
   --View9
-  -- Customer order details .
+  -- Billing detail of customer with respect to their orders .
  Create View CustomerOrderDetails AS
 Select Concat(FirstName, LastName) As CustomerName , OrderId, TotalBill From ((Orders JOIN Customer
  ON Customer.Id = Orders.CustomerId)JOIN Users ON Customer.Id = Users.Id)
 
 --View10
-   --Orders assigned to each deliverer and status of each order with deliverer names
 
- Create View DeliveryOrderDetails AS
- Select Concat(FirstName, LastName) As "Deliverer Name",  DeliveryTeamId ,[Orders DeliveryTeams].OrderId, DeliveryStatus From
- (((([Orders DeliveryTeams] JOIN TeamMembers ON TeamMembers.TeamId = [Orders DeliveryTeams].DeliveryTeamId) 
-  JOIN Orders ON Orders.OrderId = [Orders DeliveryTeams].OrderId) 
-  JOIN Employee ON [Orders DeliveryTeams].OrderId = Orders.OrderId) JOIN Users ON Users.Id = Employee.EmployeeId)   
-
- 
+  ----No of items purchased from each company
+  Create View TotalPurchasedItems AS
+ SELECT CompanyName AS "Company Name", Count(Id) AS "Total Purchased Items" FROM [Purchased Items] JOIN Suppliers ON Suppliers.SupplierId = [Purchased Items].SupplierId GROUP BY CompanyName
