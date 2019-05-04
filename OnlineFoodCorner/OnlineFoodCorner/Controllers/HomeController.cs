@@ -8,6 +8,11 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using OnlineFoodCorner;
 using System.IO;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System.Configuration;
+using CrystalDecisions.ReportSource;
+
 
 namespace OnlineFoodCorner.Controllers
 {
@@ -18,16 +23,139 @@ namespace OnlineFoodCorner.Controllers
         
         private DB24Entities db = new DB24Entities();
 
-           public ActionResult CookIndex()
-		{
-			return View();
-		}
+        public object MessageBox { get; private set; }
+
+        public ActionResult Reportt1()
+        {
+            var c = db.ChefOrderDetails.ToList();
 
 
-		public ActionResult DelIndex()
-		{
-			return View();
-		}
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report1.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report1.pdf");
+
+        }
+
+        public ActionResult Reportt2()
+        {
+            var c = db.CustomerOrders.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report2.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report2.pdf");
+
+        }
+
+        public ActionResult Reportt3()
+        {
+            var c = db.CustomerOrderDetails.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report3.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report3.pdf");
+
+        }
+
+        public ActionResult Reportt4()
+        {
+            var c = db.CustomersFeedbacks.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report4.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report4.pdf");
+
+        }
+
+        public ActionResult Reportt5()
+        {
+            var c = db.DailyIncomes.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report5.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report5.pdf");
+
+        }
+
+        public ActionResult Reportt6()
+        {
+            var c = db.DesignationDetails.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report6.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report6.pdf");
+
+        }
+
+        public ActionResult Reportt7()
+        {
+            var c = db.EmployeeDetails.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report7.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report7.pdf");
+
+        }
+
+        public ActionResult Reportt8()
+        {
+            var c = db.MenuCardDetails.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report8.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report8.pdf");
+
+        }
+
+        public ActionResult Reportt9()
+        {
+            var c = db.PurchasedItemsDetails.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report9.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report9.pdf");
+
+        }
+
+        public ActionResult Reportt10()
+        {
+            var c = db.TotalPurchasedItems.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "Report10.rpt"));
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf", "Report10.pdf");
+
+        }
+
+
 
         public ActionResult CustomerIndex()
         {
