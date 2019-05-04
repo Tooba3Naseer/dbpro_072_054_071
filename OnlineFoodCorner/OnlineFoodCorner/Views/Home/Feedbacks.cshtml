@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<OnlineFoodCorner.Feedback>
 
 @{
-    ViewBag.Title = "Othersfeedback";
+    ViewBag.Title = "feedbacks";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +36,12 @@
     </div>
     <!-- Preloader End -->
     <!-- Header Area Starts -->
-    <header class="header-area header-area2">
+    <header class="header-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo-area">
-                        <a href="index.html"><img src="~/assets/images/logo/l1.png" alt="logo"></a><b> </b>
+                        <a href="index.html"><img src="~/assets/images/logo/l.png" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -50,34 +50,26 @@
                         <span></span>
                         <span></span>
                     </div>
-
-                    <div class="main-menu main-menu2">
+                    <div class="main-menu">
                         <ul>
-                            <li class="active"><a href="@Url.Action("CustomerIndex", "Home")">home</a></li>
+                            <li class="active"><a href="index.html">home</a></li>
+                            <li><a href="#aboutUs">about</a></li>
+                           
 
 
 
 
+                            <li><a href="@Url.Action("Feedbacks", "Home")">Feedback</a></li>
 
-                            <li><a href="@Url.Action("OrderDetails", "Home")">Orders Details</a></li>
-                            <li><a href="@Url.Action("cart", "Home")">Cart</a></li>
+
                             <li>
-                                <a href="#">Customer Details</a>
+                                <a href="#">Login/Register</a>
                                 <ul class="sub-menu">
-
-                                    <li><a href="@Url.Action("MyProfile", "Users")">My Profile</a></li>
-                                    <li><a href="@Url.Action("logOut", "Home")">Log Out</a></li>
+                                    <li><a href="@Url.Action("LogIn", "Users")">Login</a></li>
+                                    <li><a href="@Url.Action("SignUpC", "Users")">Registration for Customer</a></li>
+                                    <li><a href="@Url.Action("SignUpEmp", "Users")">Registration for Admin</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#">Feedback</a>
-                                <ul class="sub-menu">
-                                    <li><a href="@Url.Action("OthersFeedback", "Users")">All Feedbacks</a></li>
-                                    <li><a href="@Url.Action("feedback", "Users")">My Feedback</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="#AboutUs">about</a></li>
                         </ul>
                     </div>
                 </div>
@@ -145,7 +137,7 @@
 
     <!--================End others feedback Area =================-->
     <!-- Footer Area Starts -->
-    <footer class="footer-area" id="AboutUs">
+    <footer class="footer-area" id="aboutUs">
         <div class="footer-widget section-padding">
             <div class="container">
                 <div class="row">

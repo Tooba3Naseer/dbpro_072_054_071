@@ -130,11 +130,23 @@ namespace OnlineFoodCorner.Controllers
                 {
                     
                     db.Users.Add(user);
+                    db.SaveChanges();
                     customer.Id = user.Id;
                     customerid = customer.Id;
                     customer.RegistrationDate = DateTime.Now;
                     db.Customers.Add(customer);
                     db.SaveChanges();
+                    Order order = new Order();
+                    order.CustomerId = customerid;
+                    order.OrderDate = DateTime.Now;
+                    order.DeliveryAddress = user.Address;
+                    order.BillingAddress = user.Address;
+                    order.DeliveryCity = user.City;
+                    order.DeliveryStatus = "Info Received";
+                    order.BillingStatus = "Unpaid";
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+                    Orderid = order.OrderId;
                     return RedirectToAction("CustomerIndex", "Home");
                 }
 
@@ -144,8 +156,9 @@ namespace OnlineFoodCorner.Controllers
             return View(user);
         }
 
+
         
-        [HttpPost]
+         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogIn(User user)
         {
@@ -179,7 +192,19 @@ namespace OnlineFoodCorner.Controllers
                     Customer customer = db.Customers.FirstOrDefault(u => u.Id == (user1.Id));
                     if (customer != null)
                     {
+                        
                         customerid = customer.Id;
+                        Order order = new Order();
+                        order.CustomerId = customerid;
+                        order.OrderDate = DateTime.Now;
+                        order.DeliveryAddress = user1.Address;
+                        order.BillingAddress = user1.Address;
+                        order.DeliveryCity = user1.City;
+                        order.DeliveryStatus = "Info Received";
+                        order.BillingStatus = "Unpaid";
+                        db.Orders.Add(order);
+                        db.SaveChanges();
+                        Orderid = order.OrderId;
                         return RedirectToAction("CustomerIndex", "Home"); }
                     Employee emp = db.Employees.FirstOrDefault(u => u.EmployeeId == (user1.Id));
                     if (emp != null)
@@ -208,7 +233,6 @@ namespace OnlineFoodCorner.Controllers
                 return View();
             
         }
-        
 
         
         [HttpPost]

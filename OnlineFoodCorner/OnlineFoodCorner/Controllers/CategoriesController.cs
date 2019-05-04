@@ -109,10 +109,17 @@ namespace OnlineFoodCorner.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
-            return RedirectToAction("ManageStock");
+            try
+            {
+                Category category = db.Categories.Find(id);
+                db.Categories.Remove(category);
+                db.SaveChanges();
+                return RedirectToAction("ManageStock");
+            }
+            catch(Exception)
+            {
+                return View("Error");
+            }
         }
 
         protected override void Dispose(bool disposing)

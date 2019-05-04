@@ -1,7 +1,7 @@
-﻿@model OnlineFoodCorner.Feedback
+﻿@model OnlineFoodCorner.OrderDetail
 
 @{
-    ViewBag.Title = "feedback";
+    ViewBag.Title = "Edit";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +11,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="assests/images/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+
+
+
     <!-- Page Title -->
-    <title>Feedback</title>
+    <title>Cart</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="~/assets/images/logo/l.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/assets/images/logo/favicon.png" type="image/x-icon">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="~/assets/css/linearicons.css">
@@ -23,11 +38,18 @@
     <link rel="stylesheet" href="~/assets/css/main.css">
 
 
+
+
     <link rel="stylesheet" href="~/assets/css/animate-3.7.0.css">
     <link rel="stylesheet" href="~/assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/flat-icon/flaticon.css">
     <link rel="stylesheet" href="~/assets/css/bootstrap-4.1.3.min.css">
     <link rel="stylesheet" href="~/assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
+
+
+
 </head>
 <body>
     <!-- Preloader Starts -->
@@ -41,7 +63,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo-area">
-                        <a href="index.html"><img src="~/assets/images/logo/l1.png" alt="logo"></a>
+                        <a href="index.html"><img src="~/assets/images/logo/l1.png" alt="logo"></a><b> </b>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -50,22 +72,31 @@
                         <span></span>
                         <span></span>
                     </div>
+
                     <div class="main-menu main-menu2">
                         <ul>
-                            <li><a href="@Url.Action("CustomerIndex", "Home")">home</a></li>
+                            <li class="active"><a href="@Url.Action("CustomerIndex", "Home")">home</a></li>
 
 
 
 
-                            
-                            <li><a href="OrderDetails.html">Orders Details</a></li>
-                            <li><a href="cart.html">Cart</a></li>
+
+                            <li><a href="@Url.Action("OrderDetails", "Home")">Orders Details</a></li>
+                            <li><a href="@Url.Action("cart", "Home")">Cart</a></li>
                             <li>
                                 <a href="#">Customer Details</a>
                                 <ul class="sub-menu">
-                                    <li class="active"><a href="@Url.Action("feedback", "Home")">Feedback</a></li>
-                                    <li><a href="@Url.Action("MyProfile", "Home")">MyProfile</a></li>
-                                    <li><a href="@Url.Action("Index", "Home")">Log Out</a></li>
+
+                                    <li><a href="@Url.Action("MyProfile", "Users")">My Profile</a></li>
+                                    <li><a href="@Url.Action("logOut", "Home")">Log Out</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Feedback</a>
+                                <ul class="sub-menu">
+                                    <li><a href="@Url.Action("OthersFeedback", "Users")">All Feedbacks</a></li>
+                                    <li><a href="@Url.Action("feedback", "Users")">My Feedback</a></li>
+
                                 </ul>
                             </li>
                             <li><a href="#AboutUs">about</a></li>
@@ -81,68 +112,62 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1><i>Feedback</i></h1>
-
+                    <h1><i>Your Shopping Cart</i></h1>
+                    <p class="pt-2"><i>Edit Quantity of Item</i></p>
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
-    <!--submit feedback form starts-->
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <section class="order_details section_gap">
-            <div class="container">
-
-                <div class="order_details_table">
-                    <h2>My Feedback</h2>
-                    <div class="table-responsive">
-                        <table class="table">
-                           
-                                @Html.LabelFor(model => model.comment, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                @Html.EditorFor(model => model.comment, new { htmlAttributes = new { @class = "form-control", style = "width: 50px;" } })
-                                @Html.ValidationMessageFor(model => model.comment, "", new { @class = "text-danger" })
-                            
-                            <tr>
-                            <td><a href="feedback.html" class="genric-btn primary circle arrow" style="padding-right:10px;">Submit<span class="lnr"></span></a></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-    }
-    <!--submit feedback form ends -->
-    <!--================Others feedback Area =================-->
-    <section class="order_details section_gap">
+    <!-- food Form Starts -->
+    <section class="contact-form section-padding3">
         <div class="container">
 
             <div class="order_details_table">
-                <h2>Others Feedback</h2>
+
                 <div class="table-responsive">
-                    <table class="table">
-                        <tr>
-                            <td>
-                                <p> Tooba Naseer </p>
-                            </td>
-                            <td> <p>Excellent service with delicious food.</p> </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p> Anmol Tariq</p>
-                            </td>
-                            <td> <p>Average food. Service should be improved.</p> </td>
-                        </tr>
+                    <h2>Edit</h2>
 
 
-                    </table>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.OrderId)
+                            @Html.HiddenFor(model => model.FoodId)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
                 </div>
             </div>
         </div>
     </section>
-    <!--================End others feedback Area =================-->
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+    <!-- food Form Ends -->
     <!-- Footer Area Starts -->
     <footer class="footer-area" id="AboutUs">
         <div class="footer-widget section-padding">
@@ -195,6 +220,7 @@
                 </div>
             </div>
         </div>
+
 
     </footer>
     <!-- Footer Area End -->

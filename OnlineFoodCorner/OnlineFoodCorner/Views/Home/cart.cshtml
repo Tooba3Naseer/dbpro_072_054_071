@@ -1,8 +1,9 @@
-﻿@model IEnumerable<OnlineFoodCorner.Feedback>
+﻿@model IEnumerable<OnlineFoodCorner.OrderDetail>
 
 @{
-    ViewBag.Title = "Othersfeedback";
+    ViewBag.Title = "Cart";
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,23 +12,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="assests/images/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+
+
+
     <!-- Page Title -->
-    <title>All Feedbacks</title>
+    <title>Cart</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="~/assets/images/logo/favicon.png" type="image/x-icon">
 
     <!-- CSS Files -->
-
+    <link rel="stylesheet" href="~/assets/css/linearicons.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
     <link rel="stylesheet" href="~/assets/css/main.css">
+
+
 
 
     <link rel="stylesheet" href="~/assets/css/animate-3.7.0.css">
     <link rel="stylesheet" href="~/assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/flat-icon/flaticon.css">
     <link rel="stylesheet" href="~/assets/css/bootstrap-4.1.3.min.css">
     <link rel="stylesheet" href="~/assets/css/owl-carousel.min.css">
-    <link rel="stylesheet" href="~/assets/css/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
+
+
+
 </head>
 <body>
     <!-- Preloader Starts -->
@@ -86,64 +109,90 @@
     </header>
     <!-- Header Area End -->
     <!-- Banner Area Starts -->
-    <section class="banner-area text-center">
+    <section class="banner-area banner-area2 blog-page text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1><i>All Feedbacks</i></h1>
+                    <h1><i>Your Shopping Cart</i></h1>
 
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
-    <!--================Others feedback Area =================-->
-
-    <section class="order_details section_gap">
+    <!--================Cart Area =================-->
+    <section class="cart_area">
         <div class="container">
-
-            <div class="order_details_table">
-                <h2>All Feedbacks</h2>
+            <div class="cart_inner">
                 <div class="table-responsive">
                     <table class="table">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Customer.User.FirstName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Customer.User.LastName)
-                            </th>
-
-                            <th>
-                                @Html.DisplayNameFor(model => model.comment)
-                            </th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Customer.User.FirstName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Customer.User.LastName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.comment)
-                                </td>
-
-
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+
+                                <tr>
+                                    <td>
+                                        <div class="media">
+
+                                            <div class="d-flex">
+
+
+                                                <img src="@Url.Content(item.MenuCard.ImagePath)" width="150" height="100" />
+                                            </div>
+                                            <div class="media-body">
+                                                <h5> @Html.DisplayFor(modelItem => item.MenuCard.Name) </h5>
+                                                <p>@Html.DisplayFor(modelItem => item.MenuCard.Description)</p>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>@Html.DisplayFor(modelItem => item.MenuCard.UnitPrice)</h5>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+
+                                    </td>
+                                    <td>
+                                        <h5>@Html.DisplayFor(modelItem => item.Price)</h5>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Delete", "Delete", new { id1 = item.OrderId, id = item.FoodId }) |
+                                        @Html.ActionLink("Change Quantity", "Edit", new { id1 = item.OrderId, id = item.FoodId })
+                                    </td>
+
+
+                                </tr>
+
+                            }
+
+
+
+
+                        </tbody>
+
 
                     </table>
+                    <div class="checkout_btn_inner d-flex align-items-center">
+                        <a class="gray_btn" href="@Url.Action("CustomerIndex", "Home")">Continue Shopping</a>
+                        <a class="primary-btn" href="@Url.Action("Proceed", "Home")">Proceed to checkout</a>
+                    </div>
+
 
                 </div>
             </div>
         </div>
     </section>
-
-    <!--================End others feedback Area =================-->
+    <!--================End Cart Area =================-->
     <!-- Footer Area Starts -->
     <footer class="footer-area" id="AboutUs">
         <div class="footer-widget section-padding">
@@ -196,6 +245,7 @@
                 </div>
             </div>
         </div>
+
 
     </footer>
     <!-- Footer Area End -->

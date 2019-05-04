@@ -1,6 +1,7 @@
-﻿
+﻿@model IEnumerable<OnlineFoodCorner.MenuCard>
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "CustomerIndex";
 }
 
 <!DOCTYPE html>
@@ -54,19 +55,26 @@
                         <ul>
                             <li class="active"><a href="@Url.Action("CustomerIndex", "Home")">home</a></li>
 
+
                             <li><a href="#MenuDishes">menu</a></li>
 
 
-
-                            <li><a href="OrderDetails.html">Orders Details</a></li>
-                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="@Url.Action("OrderDetails", "Home")">Orders Details</a></li>
+                            <li><a href="@Url.Action("cart", "Home")">Cart</a></li>
                             <li>
                                 <a href="#">Customer Details</a>
                                 <ul class="sub-menu">
+
+                                    <li><a href="@Url.Action("MyProfile", "Users")">My Profile</a></li>
+                                    <li><a href="@Url.Action("logOut", "Home")">Log Out</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Feedback</a>
+                                <ul class="sub-menu">
                                     <li><a href="@Url.Action("OthersFeedback", "Users")">All Feedbacks</a></li>
                                     <li><a href="@Url.Action("feedback", "Users")">My Feedback</a></li>
-                                    <li><a href="@Url.Action("MyProfile", "Users")">My Profile</a></li>
-                                    <li><a href="@Url.Action("Index", "Home")">Log Out</a></li>
+
                                 </ul>
                             </li>
                             <li><a href="#AboutUs">about</a></li>
@@ -77,6 +85,7 @@
         </div>
     </header>
     <!-- Header Area End -->
+   
     <!-- Banner Area Starts -->
     <section class="banner-area text-center">
         <div class="container">
@@ -134,191 +143,53 @@
                     </div>
                 </div>
             </div>
-
-            <h3> Mexican food</h3><br><br>
-
-
             <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-food">
-                        <div class="food-img">
-                            <img src="~/assets/images/food1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="food-content">
-                            <div class="d-flex justify-content-between">
-                                <h5>Mexican Eggrolls</h5>
-                                <span class="style-change">Rs320</span>
-                            </div>
-                            <p class="pt-3">Special Mexican dish.</p>
-                            <div class="button-group-area mt-40">
 
-                                <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
+
+                @foreach (var item in Model)
+                {
+                    <br><br>
+
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="single-food">
+                            <h3> @Html.DisplayFor(modelItem => item.FoodCategory.CategoryName)</h3>
+                            <div class="food-img">
+                                <img src="@Url.Content(item.ImagePath)" width="350" height="350" class="img-fluid" />
 
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-food mt-5 mt-sm-0">
-                        <div class="food-img">
-                            <img src="~/assets/images/food2.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="food-content">
-                            <div class="d-flex justify-content-between">
-                                <h5>chicken burger</h5>
-                                <span class="style-change">Rs200</span>
-                            </div>
-                            <p class="pt-3">Best burger with cheese</p>
-                            <div class="button-group-area mt-40">
+                            <div class="food-content">
+                                <div class="d-flex justify-content-between">
+                                    <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                                    <span class="style-change">@Html.DisplayFor(modelItem => item.UnitPrice)</span>
+                                </div>
+                                <p class="pt-3">@Html.DisplayFor(modelItem => item.Description).</p>
+                                <div class="button-group-area mt-40">
 
-                                <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
+                                    <span class="lnr"> @Html.ActionLink("Add to Cart", "add", new { id = item.FoodId }, new { @class = "genric-btn primary circle arrow" })</span>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-food mt-5 mt-md-0">
-                        <div class="food-img">
-                            <img src="~/assets/images/food3.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="food-content">
-                            <div class="d-flex justify-content-between">
-                                <h5>topu lasange</h5>
-                                <span class="style-change">Rs350</span>
-                            </div>
-                            <p class="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                            <div class="button-group-area mt-40">
-
-                                <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
-
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
-                <div class="col-md-4 col-sm-6">
+                }
 
-                    <h3> <br>Thai food</h3>
+                <span> @TempData["error"]</span>
 
 
-                </div>
-                <div class="col-md-4 col-sm-6">
-                </div>
-                <div class="col-md-4 col-sm-6">
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-food mt-5">
-                        <div class="food-img">
-                            <img src="~/assets/images/food4.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="food-content">
-                            <div class="d-flex justify-content-between">
-                                <h5>pepper potatoas</h5>
-                                <span class="style-change">Rs150</span>
-                            </div>
-                            <p class="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                            <div class="button-group-area mt-40">
-
-                                <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-food mt-5">
-                        <div class="food-img">
-                            <img src="~/assets/images/food5.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="food-content">
-                            <div class="d-flex justify-content-between">
-                                <h5>bean salad</h5>
-                                <span class="style-change">Rs100</span>
-                            </div>
-                            <p class="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                            <div class="button-group-area mt-40">
-
-                                <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-food mt-5">
-                        <div class="food-img">
-                            <img src="~/assets/images/food6.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="food-content">
-                            <div class="d-flex justify-content-between">
-                                <h5>beatball hoagie</h5>
-                                <span class="style-change">Rs180</span>
-                            </div>
-                            <p class="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                            <div class="button-group-area mt-40">
-
-                                <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     <!-- Food Area End -->
-    <!-- Dishes Area Starts -->
-    <div class="deshes-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-top2 text-center">
-                        <h3>Our <span>special</span> dishes</h3>
-                        <p><i>Best and most popular food items.</i></p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-5 col-md-6 align-self-center">
-                    <h1>01.</h1>
-                    <div class="deshes-text">
-                        <h3><span>Garlic</span><br> green beans</h3>
-                        <p class="pt-3">Be. Seed saying our signs beginning face give spirit own beast darkness morning moveth green multiply she'd kind saying one shall, two which darkness have day image god their night. his subdue so you rule can.</p>
-                        <span class="style-change">Rs400</span>
-                        <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
-                    </div>
-                </div>
-                <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center mt-4 mt-md-0">
-                    <img src="~/assets/images/deshes1.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-lg-5 col-md-6 align-self-center order-2 order-md-1 mt-4 mt-md-0">
-                    <img src="~/assets/images/deshes2.png" alt="" class="img-fluid">
-                </div>
-                <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center order-1 order-md-2">
-                    <h1>02.</h1>
-                    <div class="deshes-text">
-                        <h3><span>Lemon</span><br> rosemary chicken</h3>
-                        <p class="pt-3">Be. Seed saying our signs beginning face give spirit own beast darkness morning moveth green multiply she'd kind saying one shall, two which darkness have day image god their night. his subdue so you rule can.</p>
-                        <span class="style-change">Rs450</span>
-                        <a href="cart.html" class="genric-btn primary circle arrow" style="padding-right:8px;">Add to Cart<span class="lnr"></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Dishes Area End -->
+    
 
 
     <br><br>
 
 
     <!-- Footer Area Starts -->
-    <footer class="footer-area" id="aboutUs">
+    <footer class="footer-area" id="AboutUs">
         <div class="footer-widget section-padding">
             <div class="container">
                 <div class="row">
