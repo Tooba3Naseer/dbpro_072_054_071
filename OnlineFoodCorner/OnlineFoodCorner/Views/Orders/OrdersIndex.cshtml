@@ -115,6 +115,12 @@
 
                 <div class="table-responsive">
                     <h2>Index</h2>
+                    <form asp-controller="Orders" asp-action="Index">
+                        <p>
+                            Search by Delivery Status: <input type="text" name="SearchString">
+                            <input type="submit" value="Search" />
+                        </p>
+                    </form>
                     <table class="table">
                         <tr>
                             <th>

@@ -7,35 +7,45 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OnlineFoodCorner;
+using System.Threading.Tasks;
 
 namespace OnlineFoodCorner.Controllers
 {
-    public class OrdersController : Controller
-    {
-        private DB24Entities db = new DB24Entities();
+	public class OrdersController : Controller
+	{
+		private DB24Entities db = new DB24Entities();
 
-        // GET: Orders
-        public ActionResult OrdersIndex()
-        {
-            var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Orders_DeliveryTeams);
-            return View(orders.ToList());
-        }
+		// GET: Orders
+		public async Task<ActionResult> OrdersIndex(string SearchString)
+		{
+			/*var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Orders_DeliveryTeams);
+            return View(orders.ToList());*/
+			var orders = from m in db.Orders
+						 select m;
 
-        // GET: Orders/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-        /*
+			if (!String.IsNullOrEmpty(SearchString))
+			{
+				orders = orders.Where(s => s.DeliveryStatus.Contains(SearchString));
+			}
+
+			return View(await orders.ToListAsync());
+		}
+
+		// GET: Orders/Details/5
+		public ActionResult Details(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Order order = db.Orders.Find(id);
+			if (order == null)
+			{
+				return HttpNotFound();
+			}
+			return View(order);
+		}
+		/*
         // GET: Orders/Create
         public ActionResult Create()
         {
@@ -132,13 +142,13 @@ namespace OnlineFoodCorner.Controllers
             return RedirectToAction("Index");
         }
         */
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-    }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+	}
 }
