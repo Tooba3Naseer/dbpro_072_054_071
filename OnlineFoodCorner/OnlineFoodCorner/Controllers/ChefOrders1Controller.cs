@@ -18,7 +18,7 @@ namespace OnlineFoodCorner.Controllers
 		// GET: ChefOrders1
 		public ActionResult TotalOrder()
 		{
-			var chefOrders = db.ChefOrders.Include(c => c.Employee).Include(c => c.Order);
+			var chefOrders = db.ChefOrders.Include(c => c.Employee).Include(c => c.Order).Where(x => x.ChefId == UsersController.employeeid).Where((o => o.Status.Contains("Ready")));
 			return View(chefOrders.ToList());
 		}
 
@@ -34,29 +34,31 @@ namespace OnlineFoodCorner.Controllers
 			//values('"+oid+"','"+ cid+"','"+ ad+"', '"+status+"'");
 
 			//	ChefOrder ch = new ChefOrder();
+	List<ChefOrder> chef = db.ChefOrders.ToList();
+				List<Order> or = db.Orders.ToList();
+				List<OrderDetail> orderdetails = db.OrderDetails.ToList();
+				List<MenuCard> menu = db.MenuCards.ToList();
 
-			List<ChefOrder> chef = db.ChefOrders.ToList();
-			List<Order> or = db.Orders.ToList();
-			List<OrderDetail> orderdetails = db.OrderDetails.ToList();
-			List<MenuCard> menu = db.MenuCards.ToList();
+
+				var ord = from c in chef where (c.Status.Contains("In Transit") && c.ChefId == UsersController.employeeid)
+						  join o in or on c.OrderId equals o.OrderId into table1
+						  from o in table1.ToList() 
+						  join od in orderdetails on o.OrderId equals od.OrderId into table2
+						  from od in table2.ToList()
+						  join m in menu on od.FoodId equals m.FoodId into table3
+						  from m in table3.ToList()
+
+						  select new ViewModel
+						  {
+							  chef = c,
+							  or = o,
+							  orderdetails = od,
+							  menu = m
+						  };
 
 
-			var ord = from c in chef where c.Status.Contains("Not Ready")
-					  join o in or on c.OrderId equals o.OrderId into table1
-					  from o in table1.ToList() 
-					  join od in orderdetails on o.OrderId equals od.OrderId into table2
-					  from od in table2.ToList()
-					  join m in menu on od.FoodId equals m.FoodId into table3
-					  from m in table3.ToList()
-
-					  select new ViewModel
-					  {
-						  chef = c,
-						  or = o,
-						  orderdetails = od,
-						  menu = m
-					  };
 			return View(ord);
+			
 
 		}
 
