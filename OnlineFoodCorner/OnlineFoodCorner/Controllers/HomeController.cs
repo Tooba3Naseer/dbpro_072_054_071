@@ -12,7 +12,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Configuration;
 using CrystalDecisions.ReportSource;
-
+using System.Threading.Tasks;
 
 namespace OnlineFoodCorner.Controllers
 {
@@ -23,8 +23,15 @@ namespace OnlineFoodCorner.Controllers
         
         private DB24Entities db = new DB24Entities();
 
-        public object MessageBox { get; private set; }
+        public ActionResult CookIndex()
+         {
+                 return View();
+          }   
 
+       public ActionResult DellIndex()
+         {
+                 return View();
+          }  
         public ActionResult Reportt1()
         {
             var c = db.ChefOrderDetails.ToList();
@@ -157,10 +164,20 @@ namespace OnlineFoodCorner.Controllers
 
 
 
-        public ActionResult CustomerIndex()
+        public async Task<ActionResult> CustomerIndex(string searchString)
         {
-            var menuCards = db.MenuCards.Include(m => m.FoodCategory);
-            return View(menuCards.ToList());
+           /* var menuCards = db.MenuCards.Include(m => m.FoodCategory);
+            return View(menuCards.ToList());*/
+
+            var menucards = from m in db.MenuCards
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                menucards = menucards.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await menucards.ToListAsync());
         }
         public ActionResult cancel()
         {

@@ -39,8 +39,8 @@ namespace OnlineFoodCorner.Controllers
         // GET: ChefOrders/Create
         public ActionResult Create()
         {
-            ViewBag.ChefId = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo");
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderId");
+            ViewBag.ChefId = new SelectList(db.Employees.Where(c => c.EmployeeTypeId == 2), "EmployeeId", "EmployeeRegNo");
+            ViewBag.OrderId = new SelectList(db.Orders.Where(c => c.DeliveryStatus != "Delivered"), "OrderId", "OrderId");
             return View();
         }
 
@@ -53,14 +53,14 @@ namespace OnlineFoodCorner.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                chefOrder.Status = "Not Ready";
                 db.ChefOrders.Add(chefOrder);
                 db.SaveChanges();
                 return RedirectToAction("ChefOIndex");
             }
 
-            ViewBag.ChefId = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", chefOrder.ChefId);
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderId", chefOrder.OrderId);
+            ViewBag.ChefId = new SelectList(db.Employees.Where(c => c.EmployeeTypeId == 2), "EmployeeId", "EmployeeRegNo", chefOrder.ChefId);
+            ViewBag.OrderId = new SelectList(db.Orders.Where(c => c.DeliveryStatus != "Delivered"), "OrderId", "OrderId", chefOrder.OrderId);
             return View(chefOrder);
         }
 
@@ -76,8 +76,8 @@ namespace OnlineFoodCorner.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ChefId = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", chefOrder.ChefId);
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "DeliveryAddress", chefOrder.OrderId);
+            ViewBag.ChefId = new SelectList(db.Employees.Where(c => c.EmployeeTypeId == 2), "EmployeeId", "EmployeeRegNo", chefOrder.ChefId);
+            ViewBag.OrderId = new SelectList(db.Orders.Where(c => c.DeliveryStatus != "Delivered"), "OrderId", "DeliveryAddress", chefOrder.OrderId);
             return View(chefOrder);
         }
 
@@ -90,12 +90,13 @@ namespace OnlineFoodCorner.Controllers
         {
             if (ModelState.IsValid)
             {
+                chefOrder.Status = "Not Ready";
                 db.Entry(chefOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ChefOIndex");
             }
-            ViewBag.ChefId = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", chefOrder.ChefId);
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "DeliveryAddress", chefOrder.OrderId);
+            ViewBag.ChefId = new SelectList(db.Employees.Where(c => c.EmployeeTypeId == 2), "EmployeeId", "EmployeeRegNo", chefOrder.ChefId);
+            ViewBag.OrderId = new SelectList(db.Orders.Where(c => c.DeliveryStatus != "Delivered"), "OrderId", "DeliveryAddress", chefOrder.OrderId);
             return View(chefOrder);
         }
 
