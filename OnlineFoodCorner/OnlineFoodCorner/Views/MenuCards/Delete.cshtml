@@ -47,17 +47,13 @@
                     <div class="main-menu main-menu2">
                         <ul>
                             <li class="active"><a href="@Url.Action("indexAdmin","Home")">home</a></li>
-
                             <li>
                                 <a href="#">Manage Menu</a>
                                 <ul class="sub-menu">
                                     <li><a href="@Url.Action("MenuItems","MenuCards")">Manage Menu Items</a></li>
                                     <li><a href="@Url.Action("FoodCategories", "FoodCategories" )">Manage Items Catagories</a></li>
-
                                 </ul>
-
                             </li>
-
                             <li class="active">
                                 <a href="#">Manage Stock</a>
                                 <ul class="sub-menu">
@@ -66,7 +62,6 @@
                                     <li><a href="@Url.Action("ManageStockSuppliers","Suppliers")">Manage Suppliers</a></li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="#">Manage Orders</a>
                                 <ul class="sub-menu">
@@ -106,13 +101,9 @@
     <!-- food Form Starts -->
     <section class="contact-form section-padding3">
         <div class="container">
-
             <div class="order_details_table">
-
                 <div class="table-responsive">
-
                     <h2>Delete</h2>
-
                     <h3>Are you sure you want to delete this?</h3>
                     <div>
                         <h4>MenuCard</h4>
@@ -121,54 +112,41 @@
                             <dt>
                                 @Html.DisplayNameFor(model => model.ImagePath)
                             </dt>
-
                             <dd>
                                 <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(model => model.Name)
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.Name)
                             </dd>
-
                             <dt>
                                 @Html.DisplayNameFor(model => model.Description)
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.Description)
                             </dd>
-
                             <dt>
                                 @Html.DisplayNameFor(model => model.QuantityPerUnit)
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.QuantityPerUnit)
                             </dd>
-
                             <dt>
                                 @Html.DisplayNameFor(model => model.UnitPrice)
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.UnitPrice)
                             </dd>
 
-
-
                             <dt>
                                 @Html.DisplayNameFor(model => model.FoodCategory.CategoryName)
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.FoodCategory.CategoryName)
                             </dd>
-
                         </dl>
-
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
@@ -191,8 +169,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="single-widget single-widget1">
-                            <a href="index.html"><img src="~/assets/images/logo/logo.png" alt=""></a>
-
+                            <a href="index.html"><img src="~/assets/images/logo/l1.png" alt=""></a>
+                            <p>Online food corner delivers delicious food on order on your doorstep.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -240,7 +218,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 col-md-6">
-
                     </div>
                     <div class="col-lg-5 col-md-6">
                         <div class="social-icons">
@@ -263,7 +240,6 @@
     <script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="~/assets/js/vendor/bootstrap-4.1.3.min.js"></script>
     <script src="~/assets/js/vendor/wow.min.js"></script>
-
     <script src="~/assets/js/vendor/jquery.datetimepicker.full.min.js"></script>
     <script src="~/assets/js/vendor/jquery.nice-select.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I"></script>

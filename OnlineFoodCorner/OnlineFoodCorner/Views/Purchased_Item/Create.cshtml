@@ -48,17 +48,13 @@
                     <div class="main-menu main-menu2">
                         <ul>
                             <li class="active"><a href="@Url.Action("indexAdmin","Home")">home</a></li>
-
                             <li>
                                 <a href="#">Manage Menu</a>
                                 <ul class="sub-menu">
                                     <li><a href="@Url.Action("MenuItems","MenuCards")">Manage Menu Items</a></li>
                                     <li><a href="@Url.Action("FoodCategories", "FoodCategories" )">Manage Items Catagories</a></li>
-
                                 </ul>
-
                             </li>
-
                             <li class="active">
                                 <a href="#">Manage Stock</a>
                                 <ul class="sub-menu">
@@ -67,7 +63,6 @@
                                     <li><a href="@Url.Action("ManageStockSuppliers","Suppliers")">Manage Suppliers</a></li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="#">Manage Orders</a>
                                 <ul class="sub-menu">
@@ -105,14 +100,10 @@
     </section>
     <!-- Banner Area End -->
     <!-- create form Area starts -->
-
     <section class="contact-form section-padding3">
         <div class="container">
-
             <div class="order_details_table">
-
                 <div class="table-responsive">
-
 
                     @using (Html.BeginForm())
                     {
@@ -129,7 +120,6 @@
                                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 @Html.LabelFor(model => model.SupplierId, "SupplierId", htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
@@ -137,7 +127,6 @@
                                     @Html.ValidationMessageFor(model => model.SupplierId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
@@ -145,7 +134,6 @@
                                     @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 @Html.LabelFor(model => model.QuantityPerUnit, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
@@ -153,7 +141,6 @@
                                     @Html.ValidationMessageFor(model => model.QuantityPerUnit, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 @Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
@@ -161,7 +148,6 @@
                                     @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
@@ -169,7 +155,6 @@
                                     @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <input type="submit" value="Create" class="btn btn-default" />
@@ -184,7 +169,6 @@
             </div>
         </div>
     </section>
-
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
@@ -196,8 +180,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="single-widget single-widget1">
-                            <a href="index.html"><img src="~/assets/images/logo/logo.png" alt=""></a>
-
+                            <a href="index.html"><img src="~/assets/images/logo/l1.png" alt=""></a>
+                            <p>Online food corner delivers delicious food on order on your doorstep.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -241,14 +225,32 @@
                 </div>
             </div>
         </div>
-
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6">
+                    </div>
+                    <div class="col-lg-5 col-md-6">
+                        <div class="social-icons">
+                            <ul>
+                                <li class="no-margin">Follow Us</li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- Footer Area End -->
     <!-- Javascript -->
     <script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="~/assets/js/vendor/bootstrap-4.1.3.min.js"></script>
     <script src="~/assets/js/vendor/wow.min.js"></script>
-
     <script src="~/assets/js/vendor/jquery.datetimepicker.full.min.js"></script>
     <script src="~/assets/js/vendor/jquery.nice-select.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I"></script>

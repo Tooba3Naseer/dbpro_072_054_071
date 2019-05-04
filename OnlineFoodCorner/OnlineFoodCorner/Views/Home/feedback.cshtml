@@ -1,7 +1,7 @@
-﻿@model IEnumerable<OnlineFoodCorner.Feedback>
+﻿@model OnlineFoodCorner.Feedback
 
 @{
-    ViewBag.Title = "Othersfeedback";
+    ViewBag.Title = "feedback";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -12,13 +12,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>All Feedbacks</title>
+    <title>Feedback</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="~/assets/images/logo/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/assets/images/logo/l.png" type="image/x-icon">
 
     <!-- CSS Files -->
-
+    <link rel="stylesheet" href="~/assets/css/linearicons.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
     <link rel="stylesheet" href="~/assets/css/main.css">
 
 
@@ -26,7 +27,6 @@
     <link rel="stylesheet" href="~/assets/css/font-awesome-4.7.0.min.css">
     <link rel="stylesheet" href="~/assets/css/bootstrap-4.1.3.min.css">
     <link rel="stylesheet" href="~/assets/css/owl-carousel.min.css">
-    <link rel="stylesheet" href="~/assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
 </head>
 <body>
@@ -36,12 +36,12 @@
     </div>
     <!-- Preloader End -->
     <!-- Header Area Starts -->
-    <header class="header-area">
+    <header class="header-area header-area2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo-area">
-                        <a href="index.html"><img src="~/assets/images/logo/l.png" alt="logo"></a>
+                        <a href="index.html"><img src="~/assets/images/logo/l1.png" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -50,22 +50,21 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <div class="main-menu">
+                    <div class="main-menu main-menu2">
                         <ul>
-                            <li class="active"><a href="@Url.Action("CustomerIndex", "Home")">home</a></li>
-
-                            <li><a href="#MenuDishes">menu</a></li>
+                            <li><a href="@Url.Action("CustomerIndex", "Home")">home</a></li>
 
 
 
+
+                            
                             <li><a href="OrderDetails.html">Orders Details</a></li>
                             <li><a href="cart.html">Cart</a></li>
                             <li>
                                 <a href="#">Customer Details</a>
                                 <ul class="sub-menu">
-                                    <li><a href="@Url.Action("OthersFeedback", "Users")">All Feedbacks</a></li>
-                                    <li><a href="@Url.Action("feedback", "Users")">My Feedback</a></li>
-                                    <li><a href="@Url.Action("MyProfile", "Users")">My Profile</a></li>
+                                    <li class="active"><a href="@Url.Action("feedback", "Home")">Feedback</a></li>
+                                    <li><a href="@Url.Action("MyProfile", "Home")">MyProfile</a></li>
                                     <li><a href="@Url.Action("Index", "Home")">Log Out</a></li>
                                 </ul>
                             </li>
@@ -78,63 +77,71 @@
     </header>
     <!-- Header Area End -->
     <!-- Banner Area Starts -->
-    <section class="banner-area text-center">
+    <section class="banner-area banner-area2 blog-page text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1><i>All Feedbacks</i></h1>
+                    <h1><i>Feedback</i></h1>
 
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
-    <!--================Others feedback Area =================-->
+    <!--submit feedback form starts-->
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <section class="order_details section_gap">
+            <div class="container">
 
+                <div class="order_details_table">
+                    <h2>My Feedback</h2>
+                    <div class="table-responsive">
+                        <table class="table">
+                           
+                                @Html.LabelFor(model => model.comment, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.comment, new { htmlAttributes = new { @class = "form-control", style = "width: 50px;" } })
+                                @Html.ValidationMessageFor(model => model.comment, "", new { @class = "text-danger" })
+                            
+                            <tr>
+                            <td><a href="feedback.html" class="genric-btn primary circle arrow" style="padding-right:10px;">Submit<span class="lnr"></span></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    <!--submit feedback form ends -->
+    <!--================Others feedback Area =================-->
     <section class="order_details section_gap">
         <div class="container">
 
             <div class="order_details_table">
-                <h2>All Feedbacks</h2>
+                <h2>Others Feedback</h2>
                 <div class="table-responsive">
                     <table class="table">
                         <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Customer.User.FirstName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Customer.User.LastName)
-                            </th>
-
-                            <th>
-                                @Html.DisplayNameFor(model => model.comment)
-                            </th>
+                            <td>
+                                <p> Tooba Naseer </p>
+                            </td>
+                            <td> <p>Excellent service with delicious food.</p> </td>
                         </tr>
-
-                        @foreach (var item in Model)
-                        {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Customer.User.FirstName)
+                                <p> Anmol Tariq</p>
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Customer.User.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.comment)
-                            </td>
-
-
+                            <td> <p>Average food. Service should be improved.</p> </td>
                         </tr>
-                        }
+
 
                     </table>
-
                 </div>
             </div>
         </div>
     </section>
-
     <!--================End others feedback Area =================-->
     <!-- Footer Area Starts -->
     <footer class="footer-area" id="AboutUs">

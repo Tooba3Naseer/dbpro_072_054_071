@@ -50,17 +50,13 @@
                     <div class="main-menu main-menu2">
                         <ul>
                             <li class="active"><a href="@Url.Action("indexAdmin","Home")">home</a></li>
-
                             <li>
                                 <a href="#">Manage Menu</a>
                                 <ul class="sub-menu">
                                     <li><a href="@Url.Action("MenuItems","MenuCards")">Manage Menu Items</a></li>
                                     <li><a href="@Url.Action("FoodCategories", "FoodCategories" )">Manage Items Catagories</a></li>
-
                                 </ul>
-
                             </li>
-
                             <li class="active">
                                 <a href="#">Manage Stock</a>
                                 <ul class="sub-menu">
@@ -69,7 +65,6 @@
                                     <li><a href="@Url.Action("ManageStockSuppliers","Suppliers")">Manage Suppliers</a></li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="#">Manage Orders</a>
                                 <ul class="sub-menu">
@@ -106,21 +101,16 @@
         </div>
     </section>
     <!-- Banner Area End -->
-
     <br /><br /><br />
     <!-- supplier area Starts -->
 
-
-
     <section class="contact-form section-padding3">
         <div class="container">
-
             <div class="order_details_table">
                 <p style="padding-left:10px;">
                     @Html.ActionLink("Create New", "Create")
                 </p>
                 <div class="table-responsive">
-
                     <table class="table">
                         <tr>
                             <th>
@@ -146,7 +136,6 @@
                             </th>
                             <th></th>
                         </tr>
-
                         @foreach (var item in Model)
                         {
                             <tr>
@@ -178,18 +167,12 @@
                                 </td>
                             </tr>
                         }
-
                     </table>
 
-
-
                 </div>
-
             </div>
 
-
         </div>
-
     </section>
     <!-- supplier are ends  -->
     <!-- Footer Area Starts -->
@@ -199,8 +182,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="single-widget single-widget1">
-                            <a href="index.html"><img src="~/assets/images/logo/logo.png" alt=""></a>
-
+                            <a href="index.html"><img src="~/assets/images/logo/l1.png" alt=""></a>
+                            <p>Online food corner delivers delicious food on order on your doorstep.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -248,7 +231,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 col-md-6">
-
                     </div>
                     <div class="col-lg-5 col-md-6">
                         <div class="social-icons">
