@@ -43,6 +43,7 @@ namespace OnlineFoodCorner.Controllers
 			{
 				Order order1 = db.Orders.Find(orders_DeliveryTeam.OrderId);
 				order1.DeliveryStatus = "In Transit";
+                order1.EmployeeId = UsersController.employeeid;
 				orders_DeliveryTeam.AssignmentDate = DateTime.Now;
 				db.Entry(order1).State = EntityState.Modified;
 				db.SaveChanges();

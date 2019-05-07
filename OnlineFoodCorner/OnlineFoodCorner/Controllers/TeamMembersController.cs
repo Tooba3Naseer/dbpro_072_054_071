@@ -60,7 +60,7 @@ namespace OnlineFoodCorner.Controllers
             }
 
             ViewBag.TeamId = new SelectList(db.Delivery_Teams, "Id", "Name", teamMember.TeamId);
-            ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", teamMember.EmployeeId);
+            ViewBag.EmployeeId = new SelectList(db.Employees.Where(c => c.EmployeeTypeId == 3), "EmployeeId", "EmployeeRegNo", teamMember.EmployeeId);
             return View(teamMember);
         }
 
@@ -77,7 +77,7 @@ namespace OnlineFoodCorner.Controllers
                 return HttpNotFound();
             }
             ViewBag.TeamId = new SelectList(db.Delivery_Teams, "Id", "Name", teamMember.TeamId);
-            ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", teamMember.EmployeeId);
+            ViewBag.EmployeeId = new SelectList(db.Employees.Where(c => c.EmployeeTypeId == 3), "EmployeeId", "EmployeeRegNo", teamMember.EmployeeId);
             return View(teamMember);
         }
 
@@ -96,7 +96,7 @@ namespace OnlineFoodCorner.Controllers
                 return RedirectToAction("ManageTeam");
             }
             ViewBag.TeamId = new SelectList(db.Delivery_Teams, "Id", "Name", teamMember.TeamId);
-            ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "EmployeeRegNo", teamMember.EmployeeId);
+            ViewBag.EmployeeId = new SelectList(db.Employees.Where(c => c.EmployeeTypeId == 3), "EmployeeId", "EmployeeRegNo", teamMember.EmployeeId);
             return View(teamMember);
         }
 

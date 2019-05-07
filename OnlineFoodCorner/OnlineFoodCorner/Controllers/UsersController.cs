@@ -215,7 +215,7 @@ namespace OnlineFoodCorner.Controllers
                             EmployeeType type2 = db.EmployeeTypes.FirstOrDefault(u => u.Type == "Chef");
                         if(type.Id == emp.EmployeeTypeId)
                         {
-							
+                            employeeid = emp.EmployeeId;
                             return RedirectToAction("indexAdmin", "Home");
                         }
                         if (type1.Id == emp.EmployeeTypeId)

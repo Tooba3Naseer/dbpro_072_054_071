@@ -40,7 +40,7 @@ namespace OnlineFoodCorner.Controllers
 				List<MenuCard> menu = db.MenuCards.ToList();
 
 
-				var ord = from c in chef where (c.Status.Contains("In Transit") && c.ChefId == UsersController.employeeid)
+				var ord = from c in chef where (c.Status.Contains("Not Ready") && c.ChefId == UsersController.employeeid)
 						  join o in or on c.OrderId equals o.OrderId into table1
 						  from o in table1.ToList() 
 						  join od in orderdetails on o.OrderId equals od.OrderId into table2

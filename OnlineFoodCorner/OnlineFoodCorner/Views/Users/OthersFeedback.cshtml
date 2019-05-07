@@ -36,12 +36,12 @@
     </div>
     <!-- Preloader End -->
     <!-- Header Area Starts -->
-    <header class="header-area">
+    <header class="header-area header-area2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo-area">
-                        <a href="index.html"><img src="~/assets/images/logo/l.png" alt="logo"></a>
+                        <a href="index.html"><img src="~/assets/images/logo/l1.png" alt="logo"></a><b> </b>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -50,23 +50,31 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <div class="main-menu">
+
+                    <div class="main-menu main-menu2">
                         <ul>
                             <li class="active"><a href="@Url.Action("CustomerIndex", "Home")">home</a></li>
 
-                            <li><a href="#MenuDishes">menu</a></li>
 
 
 
-                            <li><a href="OrderDetails.html">Orders Details</a></li>
-                            <li><a href="cart.html">Cart</a></li>
+
+                            <li><a href="@Url.Action("OrderDetails", "Home")">Orders Details</a></li>
+                            <li><a href="@Url.Action("cart", "Home")">Cart</a></li>
                             <li>
                                 <a href="#">Customer Details</a>
                                 <ul class="sub-menu">
+
+                                    <li><a href="@Url.Action("MyProfile", "Users")">My Profile</a></li>
+                                    <li><a href="@Url.Action("logOut", "Home")">Log Out</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Feedback</a>
+                                <ul class="sub-menu">
                                     <li><a href="@Url.Action("OthersFeedback", "Users")">All Feedbacks</a></li>
                                     <li><a href="@Url.Action("feedback", "Users")">My Feedback</a></li>
-                                    <li><a href="@Url.Action("MyProfile", "Users")">My Profile</a></li>
-                                    <li><a href="@Url.Action("Index", "Home")">Log Out</a></li>
+
                                 </ul>
                             </li>
                             <li><a href="#AboutUs">about</a></li>
@@ -113,19 +121,19 @@
 
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Customer.User.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Customer.User.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.comment)
-                            </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.User.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.User.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.comment)
+                                </td>
 
 
-                        </tr>
+                            </tr>
                         }
 
                     </table>

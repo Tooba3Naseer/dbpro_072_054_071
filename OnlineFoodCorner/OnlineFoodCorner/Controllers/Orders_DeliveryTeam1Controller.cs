@@ -17,7 +17,7 @@ namespace OnlineFoodCorner.Controllers
 		// GET: Orders_DeliveryTeam1
 		public ActionResult ordertodeliver()
 		{
-			TeamMember tm = db.TeamMembers.FirstOrDefault(u => u.EmployeeId == (UsersController.employeeid));
+			TeamMember tm = db.TeamMembers.Where(u => u.Status == "Active").FirstOrDefault(u => u.EmployeeId == (UsersController.employeeid));
 			int id = tm.TeamId;
 			var orders_DeliveryTeams = db.Orders_DeliveryTeams.Include(o => o.Delivery_Team).Where(o => o.Order.DeliveryStatus.Contains("In Transit")).Where(o => o.DeliveryTeamId == id);
 
@@ -27,7 +27,7 @@ namespace OnlineFoodCorner.Controllers
 
 		public ActionResult deliveredorder()
 		{
-			TeamMember tm = db.TeamMembers.FirstOrDefault(u => u.EmployeeId == (UsersController.employeeid));
+			TeamMember tm = db.TeamMembers.Where(u => u.Status == "Active").FirstOrDefault(u => u.EmployeeId == (UsersController.employeeid));
 			int id = tm.TeamId;
 			var orders_DeliveryTeams = db.Orders_DeliveryTeams.Include(o => o.Delivery_Team).Where(o => o.Order.DeliveryStatus.Contains("Delivered")).Where(o => o.DeliveryTeamId == id);
 			return View(orders_DeliveryTeams.ToList());

@@ -28,7 +28,7 @@ namespace OnlineFoodCorner.Controllers
                  return View();
           }   
 
-       public ActionResult DellIndex()
+       public ActionResult DelIndex()
          {
                  return View();
           }  
@@ -388,10 +388,20 @@ namespace OnlineFoodCorner.Controllers
             return View(orderDetail);
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index(string searchString)
         {
-            var menuCards = db.MenuCards.Include(m => m.FoodCategory);
-            return View(menuCards.ToList());
+            /* var menuCards = db.MenuCards.Include(m => m.FoodCategory);
+             return View(menuCards.ToList());*/
+
+            var menucards = from m in db.MenuCards
+                            select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                menucards = menucards.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await menucards.ToListAsync());
         }
 
         public ActionResult indexAdmin()
