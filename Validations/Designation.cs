@@ -24,12 +24,7 @@ namespace OnlineFoodCorner
         public int Id { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Designation of Employee is required")]
         [DisplayAttribute(Name = "Designation of Employee ")]
-        [DataType(DataType.Text)]
         public string designationOfEmployee { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Salary of Employee is required")]
-        [DisplayAttribute(Name = "Salary of Employee ")]
-        [DataType(DataType.Text)]
         public decimal Salary { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

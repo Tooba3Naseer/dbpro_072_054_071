@@ -16,41 +16,32 @@ namespace OnlineFoodCorner
     public partial class User
     {
         public int Id { get; set; }
-
-            [DisplayAttribute(Name = "FirstName")]
-            [Required(AllowEmptyStrings = false, ErrorMessage = "First name required")]
-            public string FirstName { get; set; }
-
-            [DisplayAttribute(Name = "LastName")]
-            [Required(AllowEmptyStrings = false, ErrorMessage = "Last name required")]
-            public string LastName { get; set; }
-
-            [DisplayAttribute(Name = "Email")]
-            [Required(AllowEmptyStrings = false, ErrorMessage = "Email is required")]
-            [DataType(DataType.EmailAddress)]
-            public string Email { get; set; }
-
-            [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required")]
-            [DataType(DataType.Password)]
-            [MinLength(6, ErrorMessage = "Minimum 6 characters required")]
-            public string Password { get; set; }
-
-            [Required(ErrorMessage = "Phone Number is needed.")]
-            [Display(Name = "Contact")]
-            [DataType(DataType.PhoneNumber)]
-            [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid Phone number")]
-            public string Contact { get; set; }
-
-            [DisplayAttribute(Name = "Address")]
-            [Required(AllowEmptyStrings = false, ErrorMessage = "Address is required")]
-            public string Address { get; set; }
-
-            [DisplayAttribute(Name = "City")]
-            [Required(AllowEmptyStrings = false, ErrorMessage = "City name is required")]
-            public string City { get; set; }
-
-
-
+        [DisplayAttribute(Name = "First Name")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "First name required")]
+        public string FirstName { get; set; }
+        [DisplayAttribute(Name = "Last Name")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Last name required")]
+        public string LastName { get; set; }
+        [DisplayAttribute(Name = "Email")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Email is required")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Phone Number is needed.")]
+        [Display(Name = "Contact")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid Phone number")]
+        public string Contact { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Minimum 6 characters required")]
+        public string Password { get; set; }
+        [DisplayAttribute(Name = "Address")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Address is required")]
+        public string Address { get; set; }
+        [DisplayAttribute(Name = "City")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "City name is required")]
+        public string City { get; set; }
+    
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
     }

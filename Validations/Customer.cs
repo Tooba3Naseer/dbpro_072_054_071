@@ -11,8 +11,7 @@ namespace OnlineFoodCorner
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,10 +22,6 @@ namespace OnlineFoodCorner
         }
     
         public int Id { get; set; }
-        
-        [Display(Name = "Registration Date")]
-        [DataType(DataType.DateTime)]
-        [Required(ErrorMessage = "Registration Date is needed.")]
         public System.DateTime RegistrationDate { get; set; }
     
         public virtual User User { get; set; }

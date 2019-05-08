@@ -24,16 +24,11 @@ namespace OnlineFoodCorner
         }
     
         public int EmployeeId { get; set; }
-
-        [DisplayAttribute(Name = "Employee RegNo")]
-        [DataType(DataType.Text)]
+        [DisplayAttribute(Name = "Employee Registration No")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Employee RegNo is required")]
         public string EmployeeRegNo { get; set; }
-
         [Display(Name = "Hire Date")]
-        [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> HireDate { get; set; }
-
         public int DesignationId { get; set; }
         public int EmployeeTypeId { get; set; }
     

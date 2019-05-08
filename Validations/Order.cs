@@ -25,44 +25,29 @@ namespace OnlineFoodCorner
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
         public Nullable<int> EmployeeId { get; set; }
-
         [Display(Name = "Order Date")]
-        [DataType(DataType.DateTime)]
-        [Required(ErrorMessage = "Order Date is needed.")]
         public System.DateTime OrderDate { get; set; }
-
         [Display(Name = "Delivery Date")]
-        [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> DeliveryDate { get; set; }
-
         [DisplayAttribute(Name = "Total Bill")]
-        [DataType(DataType.Text)]
         public Nullable<decimal> TotalBill { get; set; }
 
         [DisplayAttribute(Name = "Delivery Address")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Delivery Address is required")]
         public string DeliveryAddress { get; set; }
 
         [DisplayAttribute(Name = "Billing Address")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Billing Address is required")]
         public string BillingAddress { get; set; }
-
         [DisplayAttribute(Name = "Delivery Area")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "DeliveryArea is required")]
-        [DataType(DataType.Text)]
+       
         public string DeliveryArea { get; set; }
-
         [DisplayAttribute(Name = "Delivery City")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Delivery City is required")]
-        [DataType(DataType.Text)]
+        
         public string DeliveryCity { get; set; }
-
         [DisplayAttribute(Name = "Delivery Status")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "DeliveryStatus is required")]
+        
         public string DeliveryStatus { get; set; }
-
         [DisplayAttribute(Name = "Billing Status")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Billing Status is required")]
+        
         public string BillingStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

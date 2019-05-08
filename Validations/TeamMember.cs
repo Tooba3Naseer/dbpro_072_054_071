@@ -13,17 +13,16 @@ namespace OnlineFoodCorner
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+
     public partial class TeamMember
     {
         public int TeamId { get; set; }
         public int EmployeeId { get; set; }
-
         [DisplayAttribute(Name = "Status")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Status is required")]
         public string Status { get; set; }
 
         [Display(Name = "Assignment Date")]
-        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Assignment Date is needed.")]
         public System.DateTime AssignmentDate { get; set; }
     

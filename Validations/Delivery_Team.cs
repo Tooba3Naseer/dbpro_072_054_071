@@ -23,15 +23,10 @@ namespace OnlineFoodCorner
         }
     
         public int Id { get; set; }
-
-
         [DisplayAttribute(Name = "Delivery Team Name")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Delivery Team Name s required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Delivery Team Name is required")]
         public string Name { get; set; }
-
-
         [Display(Name = "Create Date")]
-        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Create Date is needed.")]
         public System.DateTime Create_Date { get; set; }
     

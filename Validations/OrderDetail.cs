@@ -17,19 +17,9 @@ namespace OnlineFoodCorner
     {
         public int OrderId { get; set; }
         public int FoodId { get; set; }
-
-        [DisplayAttribute(Name = "Quantity")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Quantity is required")]
-        [DataType(DataType.Text)]
         public int Quantity { get; set; }
-
-        [DisplayAttribute(Name = "Discount Price")]
-        [DataType(DataType.Text)]
         public Nullable<decimal> Discount { get; set; }
-
-        [DisplayAttribute(Name = "Price")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Price is required")]
-        [DataType(DataType.Text)]
         public decimal Price { get; set; }
     
         public virtual MenuCard MenuCard { get; set; }

@@ -22,13 +22,9 @@ namespace OnlineFoodCorner
         }
     
         public int Id { get; set; }
-        [DisplayAttribute(Name = "Category ame")]
+        [DisplayAttribute(Name = "Category Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Category name is required")]
-        [DataType(DataType.Text)]
         public string CategoryName { get; set; }
-
-        [DisplayAttribute(Name = "Description")]
-        [DataType(DataType.Text)]
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

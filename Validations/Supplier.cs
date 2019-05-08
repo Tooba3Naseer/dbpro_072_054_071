@@ -25,29 +25,22 @@ namespace OnlineFoodCorner
         [DisplayAttribute(Name = "Company Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Company name required")]
         public string CompanyName { get; set; }
-
         [DisplayAttribute(Name = "Contact Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Contact name required")]
         public string ContactName { get; set; }
-
         public string Address { get; set; }
-
         [Required(ErrorMessage = "Phone Number is needed.")]
-        [Display(Name = "Contact")]
+        [Display(Name = "Contact No")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid Phone number")]
         public string PhoneNo { get; set; }
-
-        [DisplayAttribute(Name = "City")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "City name is required")]
         [DataType(DataType.Text)]
         public string City { get; set; }
-
         [DisplayAttribute(Name = "Country")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Country name is required")]
         [DataType(DataType.Text)]
         public string Country { get; set; }
-
         [DisplayAttribute(Name = "Area")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Area is required")]
         [DataType(DataType.Text)]

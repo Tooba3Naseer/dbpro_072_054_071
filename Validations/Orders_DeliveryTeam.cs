@@ -17,12 +17,9 @@ namespace OnlineFoodCorner
     {
         public int OrderId { get; set; }
         public int DeliveryTeamId { get; set; }
-
         [Display(Name = "Assignment Date")]
-        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Assignment Date is needed.")]
         public System.DateTime AssignmentDate { get; set; }
-    
     
         public virtual Delivery_Team Delivery_Team { get; set; }
         public virtual Order Order { get; set; }

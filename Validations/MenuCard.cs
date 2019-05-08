@@ -24,25 +24,16 @@ namespace OnlineFoodCorner
         }
 
         public int FoodId { get; set; }
-
         [DisplayAttribute(Name = "Food Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Food name is required")]
         public string Name { get; set; }
-
-        [DisplayAttribute(Name = "Description")]
-        [DataType(DataType.Text)]
         public string Description { get; set; }
-
-        [DisplayAttribute(Name = "Quantity")]
+        [DisplayAttribute(Name = "Quantity Per Unit")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Quantity is required")]
-        [DataType(DataType.Text)]
         public string QuantityPerUnit { get; set; }
-
         [DisplayAttribute(Name = "Unit Price")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Unit Price is required")]
-        [DataType(DataType.Text)]
         public decimal UnitPrice { get; set; }
-
         [DisplayName("Picture")]
         public string ImagePath { get; set; }
         public int CategoryId { get; set; }

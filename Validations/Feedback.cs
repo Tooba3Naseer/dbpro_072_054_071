@@ -11,13 +11,10 @@ namespace OnlineFoodCorner
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Feedback
     {
         public int Id { get; set; }
-        [DisplayAttribute(Name = "Feedback")]
-        [DataType(DataType.Text)]
         public string comment { get; set; }
         public int CustomerId { get; set; }
     

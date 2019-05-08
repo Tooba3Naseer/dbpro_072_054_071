@@ -20,14 +20,12 @@ namespace OnlineFoodCorner
         {
             this.Purchased_Items = new HashSet<Purchased_Item>();
         }
-    
+
+        [DisplayAttribute(Name = "Category Name")]
         public int CategoryId { get; set; }
-        public int Id { get; set; }
-        [DisplayAttribute(Name = "Category ame")]
+        [DisplayAttribute(Name = "Category Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Category name is required")]
         public string CategoryName { get; set; }
-        [DisplayAttribute(Name = "Description")]
-        [DataType(DataType.Text)]
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -16,25 +16,17 @@ namespace OnlineFoodCorner
     public partial class Purchased_Item
     {
         public int Id { get; set; }
-
         [DisplayAttribute(Name = "Product Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Product name required")]
         public string Name { get; set; }
-
         public int SupplierId { get; set; }
         public int CategoryId { get; set; }
-
-        [DisplayAttribute(Name = "Quantity")]
+        [DisplayAttribute(Name = "Quantity Per Unit")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Quantity is required")]
-        [DataType(DataType.Text)]
         public string QuantityPerUnit { get; set; }
-
-        [DisplayAttribute(Name = "Unit In Stock")]
-        [DataType(DataType.Text)]
+        [DisplayAttribute(Name = "Units In Stock")]
         public Nullable<int> UnitsInStock { get; set; }
-
         [DisplayAttribute(Name = "Unit Price")]
-        [DataType(DataType.Text)]
         public Nullable<decimal> UnitPrice { get; set; }
     
         public virtual Category Category { get; set; }

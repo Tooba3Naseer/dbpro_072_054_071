@@ -17,17 +17,20 @@ namespace OnlineFoodCorner
     {
         public int OrderId { get; set; }
         public int ChefId { get; set; }
-
         [Display(Name = "Assignment Date")]
-        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Assignment Date is needed.")]
         public System.DateTime AssignmentDate { get; set; }
-
-        [DisplayAttribute(Name = "Status")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Status is required")]
+        
         public string Status { get; set; }
-    
+
+
         public virtual Employee Employee { get; set; }
         public virtual Order Order { get; set; }
+    }
+
+    public enum Status
+    {
+        Ready,
+        InProcess
     }
 }
